@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidnet Family High School - News Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #047857;
+            --secondary: #c2410c;
+            --accent: #f59e0b;
+            --primary-dark: #064e3b;
+            --primary-light: #16a34a;
+            --gradient: linear-gradient(135deg, #047857, #16a34a);
+            --gradient-gold: linear-gradient(135deg, #f59e0b, #d97706);
+            --gradient-sunset: linear-gradient(135deg, #f97316, #c2410c);
+            --light: #f0fdf4;
+            --dark: #0f172a;
+            --gray: #475569;
+            --light-gray: #d9f99d;
+            --success: #10b981;
+            --warning: #facc15;
+            --info: #22c55e;
+            --shadow: rgba(4, 120, 87, 0.12);
+            --shadow-dark: rgba(15, 23, 42, 0.16);
+            --shadow-glow: rgba(245, 158, 11, 0.25);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 18px;
+            --radius-large: 28px;
+            --text-dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.16);
+            --glass-border: rgba(255, 255, 255, 0.24);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeInScale 0.5s ease;
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(16, 185, 129, 0.95));
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            font-weight: bold;
+            border: 3px solid var(--accent);
+            box-shadow: 0 8px 32px var(--shadow-glow);
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 40px var(--shadow-glow);
+        }
+
+        .school-name h1 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .school-name p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .admin-panel {
+            display: none;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--dark);
+            box-shadow: 0 4px 20px var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-admin {
+            background: var(--gradient-sunset);
+            color: white;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-admin:hover {
+            background: linear-gradient(135deg, #ea580c, #dc2626);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--light-gray);
+            position: fixed;
+            top: 88px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            animation: slideInRight 0.8s ease 0.2s both;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .main-nav a {
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .main-nav a:hover {
+            background: var(--light-gray);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 160px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.9), rgba(16, 185, 129, 0.8)),
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.03"/><circle cx="10" cy="50" r="0.5" fill="white" opacity="0.03"/><circle cx="90" cy="30" r="0.5" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .event-video-section {
+            padding: 4rem 0;
+            background: radial-gradient(circle at top left, rgba(5, 150, 105, 0.08), transparent 35%),
+                        radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.08), transparent 28%),
+                        linear-gradient(180deg, #f8faf9 0%, #ffffff 100%);
+        }
+
+        .video-card {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 2rem;
+            background: white;
+            border-radius: var(--radius-large);
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(5, 150, 105, 0.12);
+            padding: 2.5rem;
+            align-items: center;
+        }
+
+        .video-copy {
+            max-width: 560px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1.1rem;
+            border-radius: 999px;
+            background: rgba(245, 158, 11, 0.14);
+            color: #92400e;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.2rem;
+            box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.12);
+        }
+
+        .video-copy h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.08;
+        }
+
+        .video-copy p {
+            color: var(--gray);
+            line-height: 1.85;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .video-preview {
+            position: relative;
+            display: grid;
+            place-items: center;
+            background: #03081a;
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        .video-preview::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.18));
+            pointer-events: none;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            object-fit: cover;
+            border: none;
+            display: block;
+            background: black;
+        }
+
+        .video-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 1.75rem;
+            border-radius: 999px;
+            box-shadow: 0 16px 35px rgba(5, 150, 105, 0.2);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .video-cta:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #16a34a, #f59e0b);
+        }
+
+        .info-stream-section {
+            padding: 3rem 0 4rem;
+        }
+
+        .info-stream-card {
+            background: white;
+            border-radius: var(--radius-large);
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+            padding: 2rem;
+            border: 1px solid rgba(5, 150, 105, 0.08);
+        }
+
+        .info-stream-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-stream-header h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+
+        .info-stream-content {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: grid;
+            gap: 0.75rem;
+            padding: 1.4rem 1.6rem;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.06), rgba(245, 158, 11, 0.06));
+            border-radius: var(--radius);
+            border: 1px solid rgba(5, 150, 105, 0.08);
+            animation: fadeInUp 0.5s ease both;
+        }
+
+        .info-item h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-dark);
+        }
+
+        .info-item p {
+            color: var(--gray);
+            line-height: 1.75;
+        }
+
+        .site-footer {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-column p,
+        .footer-column a,
+        .footer-column li {
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid rgba(226, 232, 240, 0.12);
+            padding-top: 1.5rem;
+            color: rgba(226, 232, 240, 0.7);
+            font-size: 0.95rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            color: rgba(226, 232, 240, 0.85);
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent);
+        }
+
+        /* News Grid */
+        .news-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .news-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .admin-card-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .admin-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(5, 150, 105, 0.12);
+            box-shadow: 0 25px 60px rgba(5, 150, 105, 0.08);
+            border-radius: var(--radius-large);
+            padding: 2rem;
+        }
+
+        .admin-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            background: var(--gradient);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            box-shadow: 0 12px 30px rgba(5, 150, 105, 0.2);
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .admin-card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .admin-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 680px;
+        }
+
+        .admin-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .admin-card-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .admin-stat {
+            background: rgba(5, 150, 105, 0.06);
+            border: 1px solid rgba(5, 150, 105, 0.12);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            text-align: center;
+        }
+
+        .admin-stat span {
+            display: block;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .admin-stat small {
+            display: block;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            left: 0;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid var(--light-gray);
+            animation: fadeInScale 0.6s ease both;
+            animation-delay: calc(var(--i, 0) * 0.1s);
+        }
+
+        .news-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(5, 150, 105, 0.2);
+        }
+
+        .news-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .news-card:hover .news-image::before {
+            opacity: 0.1;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 8px 16px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .news-title:hover {
+            color: var(--primary);
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .news-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .news-read-more {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .news-read-more:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .news-delete {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(10px) scale(0.8);
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 3;
+        }
+
+        .news-card:hover .news-delete {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .news-delete:hover {
+            background: #b91c1c;
+            transform: scale(1.1);
+        }
+
+        .news-card:hover .news-delete {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .news-delete:hover {
+            background: #b91c1c;
+            transform: scale(1.1);
+        }
+
+        /* Admin Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--radius-large);
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--light-gray);
+            color: var(--text-dark);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        /* Login Modal */
+        .login-modal .modal-content {
+            max-width: 400px;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 24px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            z-index: 10001;
+            transform: translateX(400px);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--secondary);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Loading States */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, var(--light-gray) 25%, rgba(255, 255, 255, 0.5) 50%, var(--light-gray) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius);
+        }
+
+        .skeleton-text {
+            height: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skeleton-title {
+            height: 1.5rem;
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-image {
+            height: 200px;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .admin-card {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-actions {
+                justify-content: flex-start;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .news-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .video-card {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+
+            .video-preview {
+                min-height: 280px;
+            }
+
+            .video-copy h2 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .news-card {
+                margin: 0 1rem;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Loading News Portal...</h2>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-name">
+                    <h1>Liquidnet Family High School</h1>
+                    <p>News & Updates Portal</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="admin-panel" id="admin-panel">
+                    <button class="btn btn-admin" id="add-news-btn">
+                        <i class="fas fa-plus"></i> Add News
+                    </button>
+                    <button class="btn btn-secondary" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                <button class="btn btn-primary" id="login-btn">
+                    <i class="fas fa-user-shield"></i> Admin Login
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="main-nav">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="school_news.html" class="active"><i class="fas fa-newspaper"></i> News</a></li>
+                <li><a href="school_about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="school_admission.html"><i class="fas fa-user-graduate"></i> Admissions</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <a href="#" class="nav-cta" id="subscribe-btn">
+                <i class="fas fa-bell"></i> Subscribe
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Stay Connected with LFHS</h1>
+                <p>Discover the latest news, achievements, and events from Liquidnet Family High School. Your gateway to our vibrant community.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="news-count">0</span>
+                        <span class="stat-label">News Articles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="events-count">0</span>
+                        <span class="stat-label">Upcoming Events</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="achievements-count">0</span>
+                        <span class="stat-label">Achievements</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="community-count">0</span>
+                        <span class="stat-label">Community Impact</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Video -->
+        <section class="event-video-section">
+            <div class="container">
+                <div class="video-card">
+                    <div class="video-copy">
+                        <span class="eyebrow"><i class="fas fa-film"></i> Spotlight Event</span>
+                        <h2>Experience the Moment — Our Event Highlights</h2>
+                        <p>Enjoy a quick highlight reel of our latest school celebration. The video captures student performances, awards, and the joyful energy that makes every event special.</p>
+                        <a href="school_events.html" class="btn btn-admin video-cta"><i class="fas fa-calendar-check"></i> Explore Full Event Coverage</a>
+                    </div>
+                    <div class="video-preview">
+                        <video class="video-player" controls preload="metadata" playsinline poster="school-event-poster.jpg">
+                            <source src="video.mp4" type="video/mp4">
+                            Your browser does not support embedded videos.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Bulletin -->
+        <section class="info-stream-section">
+            <div class="container">
+                <div class="info-stream-card">
+                    <div class="info-stream-header">
+                        <span class="eyebrow"><i class="fas fa-bolt"></i> Live Bulletin</span>
+                        <h2>School News That Updates Itself</h2>
+                    </div>
+                    <div class="info-stream-content" id="info-stream-content">
+                        <div class="info-item">
+                            <h3>Loading important school news...</h3>
+                            <p>New articles and announcements will rotate here automatically as the news feed updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section class="admin-card-section" id="admin-card-section" hidden>
+            <div class="container">
+                <div class="admin-card">
+                    <div>
+                        <div class="admin-card-badge"><i class="fas fa-tools"></i> Admin Dashboard</div>
+                        <h2>Manage the news portal with confidence</h2>
+                        <p>As the current admin, you can add urgent announcements, remove outdated stories, and keep the community updated with clean, fast news coverage.</p>
+                        <div class="admin-card-stats">
+                            <div class="admin-stat">
+                                <span id="admin-news-count">0</span>
+                                <small>Total Articles</small>
+                            </div>
+                            <div class="admin-stat">
+                                <span id="admin-events-count">0</span>
+                                <small>Event Stories</small>
+                            </div>
+                            <div class="admin-stat">
+                                <span id="admin-achievements-count">0</span>
+                                <small>Achievements</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn btn-admin" id="admin-add-news-card-btn"><i class="fas fa-plus"></i> Add News</button>
+                        <button class="btn btn-secondary" id="admin-logout-card-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Latest News & Updates</h2>
+                    <p>Stay informed with the most recent developments and stories from our school community.</p>
+                </div>
+
+                <div class="news-controls">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All News</button>
+                        <button class="filter-btn" data-filter="academic">Academic</button>
+                        <button class="filter-btn" data-filter="sports">Sports</button>
+                        <button class="filter-btn" data-filter="events">Events</button>
+                        <button class="filter-btn" data-filter="achievements">Achievements</button>
+                        <button class="filter-btn" data-filter="announcements">Announcements</button>
+                    </div>
+                </div>
+
+                <div class="news-grid" id="news-grid">
+                    <!-- News cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Admin Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Admin Login</h3>
+                <button class="modal-close" data-modal="login-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="school-code">School Access Code</label>
+                    <input type="text" id="school-code" class="form-input" placeholder="Enter school access code" required>
+                    <small style="color: var(--gray);">Enter the school access code to unlock admin editing privileges.</small>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="login-modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add News Modal -->
+    <div class="modal" id="add-news-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Article</h3>
+                <button class="modal-close" data-modal="add-news-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="add-news-form">
+                <div class="form-group">
+                    <label class="form-label" for="news-title">Title</label>
+                    <input type="text" id="news-title" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="news-category">Category</label>
+                    <select id="news-category" class="form-select" required>
+                        <option value="">Select Category</option>
+                        <option value="academic">Academic</option>
+                        <option value="sports">Sports</option>
+                        <option value="events">Events</option>
+                        <option value="achievements">Achievements</option>
+                        <option value="announcements">Announcements</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="news-image">Image URL</label>
+                    <input type="url" id="news-image" class="form-input" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="news-content">Content</label>
+                    <textarea id="news-content" class="form-textarea" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" data-modal="add-news-modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Publish Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text">Operation completed successfully!</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const adminPanel = document.getElementById('admin-panel');
+        const addNewsBtn = document.getElementById('add-news-btn');
+        const adminCardSection = document.getElementById('admin-card-section');
+        const adminAddNewsCardBtn = document.getElementById('admin-add-news-card-btn');
+        const adminNewsCount = document.getElementById('admin-news-count');
+        const adminEventsCount = document.getElementById('admin-events-count');
+        const adminAchievementsCount = document.getElementById('admin-achievements-count');
+        const infoStreamContent = document.getElementById('info-stream-content');
+        const schoolCodeInput = document.getElementById('school-code');
+        const loginModal = document.getElementById('login-modal');
+        const addNewsModal = document.getElementById('add-news-modal');
+        const loginForm = document.getElementById('login-form');
+        const addNewsForm = document.getElementById('add-news-form');
+        const newsGrid = document.getElementById('news-grid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+
+        // Stats Elements
+        const newsCount = document.getElementById('news-count');
+        const eventsCount = document.getElementById('events-count');
+        const achievementsCount = document.getElementById('achievements-count');
+        const communityCount = document.getElementById('community-count');
+
+        // State
+        let isAdmin = false;
+        let currentFilter = 'all';
+        let newsData = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading overlay
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 1500);
+
+            // Load news data
+            loadNewsData();
+
+            // Setup event listeners
+            setupEventListeners();
+
+            // Check admin status
+            checkAdminStatus();
+
+            // Setup live stream and scroll animations
+            initInfoStream();
+            setupScrollAnimations();
+        });
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Modal controls
+            document.querySelectorAll('.modal-close, [data-modal]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modalId = e.target.closest('[data-modal]')?.dataset.modal || e.target.dataset.modal;
+                    if (modalId) {
+                        closeModal(modalId);
+                    }
+                });
+            });
+
+            // Login/Logout
+            loginBtn.addEventListener('click', () => openModal('login-modal'));
+            logoutBtn.addEventListener('click', logout);
+
+            // Add news
+            addNewsBtn.addEventListener('click', () => openModal('add-news-modal'));
+            if (adminAddNewsCardBtn) {
+                adminAddNewsCardBtn.addEventListener('click', () => openModal('add-news-modal'));
+            }
+
+            const adminLogoutCardBtn = document.getElementById('admin-logout-card-btn');
+            if (adminLogoutCardBtn) {
+                adminLogoutCardBtn.addEventListener('click', logout);
+            }
+
+            // Forms
+            loginForm.addEventListener('submit', handleLogin);
+            addNewsForm.addEventListener('submit', handleAddNews);
+
+            // Filters
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentFilter = e.target.dataset.filter;
+                    filterNews();
+                });
+            });
+
+            // Close modals on outside click
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Admin Functions
+        function checkAdminStatus() {
+            const adminStatus = localStorage.getItem('lfhs_admin_logged_in');
+            if (adminStatus === 'true') {
+                isAdmin = true;
+                adminPanel.classList.add('active');
+                loginBtn.style.display = 'none';
+                showAdminCard();
+                showNotification('Welcome back, Admin!', 'success');
+            }
+        }
+
+        function showAdminCard() {
+            if (adminCardSection) {
+                adminCardSection.hidden = false;
+            }
+            updateAdminStats();
+        }
+
+        function hideAdminCard() {
+            if (adminCardSection) {
+                adminCardSection.hidden = true;
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const code = document.getElementById('school-code').value.trim();
+
+            // School code grants admin access
+            if (code === '551203') {
+                isAdmin = true;
+                localStorage.setItem('lfhs_admin_logged_in', 'true');
+                adminPanel.classList.add('active');
+                loginBtn.style.display = 'none';
+                showAdminCard();
+                closeModal('login-modal');
+                loginForm.reset();
+                showNotification('Admin access granted!', 'success');
+                loadNewsData(); // Reload to show delete buttons
+            } else {
+                showNotification('Invalid school access code!', 'error');
+            }
+        }
+
+        function logout() {
+            isAdmin = false;
+            localStorage.removeItem('lfhs_admin_logged_in');
+            adminPanel.classList.remove('active');
+            loginBtn.style.display = 'inline-flex';
+            hideAdminCard();
+            showNotification('Logged out successfully!', 'success');
+            loadNewsData(); // Reload to hide delete buttons
+        }
+
+        function updateAdminStats() {
+            if (adminNewsCount) {
+                adminNewsCount.textContent = newsData.length;
+            }
+            if (adminEventsCount) {
+                adminEventsCount.textContent = newsData.filter(n => n.category === 'events').length;
+            }
+            if (adminAchievementsCount) {
+                adminAchievementsCount.textContent = newsData.filter(n => n.category === 'achievements').length;
+            }
+        }
+
+        function initInfoStream() {
+            if (!infoStreamContent || !newsData.length) return;
+            let streamItems = newsData.slice(0, 4).map((item) => ({
+                title: item.title,
+                content: item.content.substring(0, 110) + '...',
+                category: item.category
+            }));
+            let currentIndex = 0;
+
+            const renderItem = (item) => {
+                infoStreamContent.innerHTML = `
+                    <div class="info-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.content}</p>
+                    </div>
+                `;
+            };
+
+            renderItem(streamItems[currentIndex]);
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % streamItems.length;
+                renderItem(streamItems[currentIndex]);
+            }, 7000);
+        }
+
+        // News Functions
+        function loadNewsData() {
+            // Load from localStorage or use default data
+            const storedNews = localStorage.getItem('lfhs_news_data');
+            if (storedNews) {
+                newsData = JSON.parse(storedNews);
+            } else {
+                // Default news data
+                newsData = [
+                    {
+                        id: 1,
+                        title: "LFHS Students Excel in National Exams",
+                        category: "achievements",
+                        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "Our students achieved a remarkable 100% pass rate in this year's national examinations. This outstanding performance reflects the dedication of our students and the quality education provided at Liquidnet Family High School.",
+                        date: "2024-04-15",
+                        featured: true
+                    },
+                    {
+                        id: 2,
+                        title: "New Robotics Lab Opens",
+                        category: "academic",
+                        image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "We're excited to announce the opening of our state-of-the-art robotics laboratory. This new facility will enhance our STEAM curriculum and provide students with hands-on experience in robotics and automation.",
+                        date: "2024-04-10",
+                        featured: false
+                    },
+                    {
+                        id: 3,
+                        title: "Cultural Day Celebration",
+                        category: "events",
+                        image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "Our annual Cultural Day brought together students from diverse backgrounds to celebrate Rwanda's rich cultural heritage. The event featured traditional dances, music, and exhibitions showcasing our vibrant community.",
+                        date: "2024-04-05",
+                        featured: false
+                    },
+                    {
+                        id: 4,
+                        title: "Basketball Team Wins Regional Championship",
+                        category: "sports",
+                        image: "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "Our basketball team brought home the regional championship trophy after an outstanding season. The team's dedication and teamwork were key factors in this remarkable achievement.",
+                        date: "2024-03-28",
+                        featured: false
+                    },
+                    {
+                        id: 5,
+                        title: "New Partnership with Local University",
+                        category: "announcements",
+                        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "We're proud to announce a new partnership with the University of Rwanda. This collaboration will provide our students with enhanced opportunities for higher education and research.",
+                        date: "2024-03-20",
+                        featured: false
+                    },
+                    {
+                        id: 6,
+                        title: "Community Service Initiative Launched",
+                        category: "events",
+                        image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+                        content: "Our new community service initiative encourages students to give back to the local community. Through various projects, students learn the importance of service and social responsibility.",
+                        date: "2024-03-15",
+                        featured: false
+                    }
+                ];
+                localStorage.setItem('lfhs_news_data', JSON.stringify(newsData));
+            }
+
+            renderNews();
+            updateStats();
+            updateAdminStats();
+        }
+
+        function renderNews() {
+            newsGrid.innerHTML = '';
+
+            const filteredNews = currentFilter === 'all' ?
+                newsData :
+                newsData.filter(news => news.category === currentFilter);
+
+            filteredNews.forEach((news, index) => {
+                const newsCard = createNewsCard(news, index);
+                newsGrid.appendChild(newsCard);
+            });
+
+            initInfoStream();
+        }
+
+        function createNewsCard(news, index) {
+            const card = document.createElement('div');
+            card.className = 'news-card scroll-reveal';
+            card.style.setProperty('--i', index);
+            card.setAttribute('data-category', news.category);
+
+            card.innerHTML = `
+                <div class="news-image">
+                    <img src="${news.image}" alt="${news.title}" loading="lazy">
+                    <span class="news-category">${news.category}</span>
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">${news.title}</h3>
+                    <p class="news-excerpt">${news.content.substring(0, 150)}...</p>
+                    <div class="news-meta">
+                        <div class="news-date">
+                            <i class="fas fa-calendar"></i>
+                            ${formatDate(news.date)}
+                        </div>
+                        <div class="news-actions">
+                            ${news.category === 'events'
+                                ? `<a href="school_events.html" class="news-read-more">View Event Page <i class="fas fa-arrow-right"></i></a>`
+                                : `<a href="#" class="news-read-more" onclick="readMore(${news.id})">Read More <i class="fas fa-arrow-right"></i></a>`
+                            }
+                            ${isAdmin ? `<button class="news-delete" onclick="deleteNews(${news.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function handleAddNews(e) {
+            e.preventDefault();
+
+            const newNews = {
+                id: Date.now(),
+                title: document.getElementById('news-title').value,
+                category: document.getElementById('news-category').value,
+                image: document.getElementById('news-image').value || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                content: document.getElementById('news-content').value,
+                date: new Date().toISOString().split('T')[0],
+                featured: false
+            };
+
+            newsData.unshift(newNews);
+            localStorage.setItem('lfhs_news_data', JSON.stringify(newsData));
+
+            closeModal('add-news-modal');
+            addNewsForm.reset();
+            renderNews();
+            updateStats();
+            initInfoStream();
+            showNotification('News article added successfully!', 'success');
+
+            // Scroll to top to show new article
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function deleteNews(id) {
+            if (confirm('Are you sure you want to delete this news article?')) {
+                newsData = newsData.filter(news => news.id !== id);
+                localStorage.setItem('lfhs_news_data', JSON.stringify(newsData));
+                renderNews();
+                updateStats();
+                initInfoStream();
+                showNotification('News article deleted!', 'success');
+            }
+        }
+
+        function readMore(id) {
+            const news = newsData.find(n => n.id === id);
+            if (news) {
+                // For now, just show an alert. In a real app, this would open a detailed view
+                alert(`${news.title}\n\n${news.content}\n\nPublished: ${formatDate(news.date)}`);
+            }
+        }
+
+        function filterNews() {
+            renderNews();
+        }
+
+        function updateStats() {
+            newsCount.textContent = newsData.length;
+            eventsCount.textContent = newsData.filter(n => n.category === 'events').length;
+            achievementsCount.textContent = newsData.filter(n => n.category === 'achievements').length;
+            communityCount.textContent = newsData.filter(n => ['events', 'announcements'].includes(n.category)).length;
+        }
+
+        // Utility Functions
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        function showNotification(message, type = 'success') {
+            notificationText.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function setupScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Global functions for onclick handlers
+        window.deleteNews = deleteNews;
+        window.readMore = readMore;
+    </script>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-column">
+                <h3>Liquidnet Family High School</h3>
+                <p>Delivering student-centered news, academic highlights, and community updates with clarity and care.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="school_news.html">News</a></li>
+                    <li><a href="school_about.html">About</a></li>
+                    <li><a href="school_admission.html">Admissions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Agahozo-Shalom Youth Village, Rwanda</p>
+                <p>Email: <a href="mailto:lnfhs@asyv.org">lnfhs@asyv.org</a></p>
+                <p>Phone: +250 788 123 456</p>
+            </div>
+            <div class="footer-column">
+                <h3>Stay Connected</h3>
+                <ul>
+                    <li><a href="#">Subscribe to updates</a></li>
+                    <li><a href="#">Event calendar</a></li>
+                    <li><a href="#">Student achievements</a></li>
+                    <li><a href="#">Community stories</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>© 2026 Liquidnet Family High School. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

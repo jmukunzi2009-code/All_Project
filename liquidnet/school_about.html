@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Liquidnet Family High School | Our Story, Values & Community</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --dark-green: #1B4D3E;
+            --forest-green: #2E583C;
+            --emerald: #2ECC71;
+            --orange: #E67E22;
+            --burnt-orange: #D35400;
+            --gold: #F1C40F;
+            --chocolate: #8B4513;
+            --light-chocolate: #A0522D;
+            --cream: #FDF5E6;
+            --ivory: #FFFFF0;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --shadow: rgba(27, 77, 62, 0.15);
+            --gradient: linear-gradient(135deg, var(--dark-green), var(--forest-green));
+            --gradient-gold: linear-gradient(135deg, var(--orange), var(--gold));
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #1B4D3E;
+            --secondary: #D35400;
+            --accent: #F1C40F;
+            --light: #FDF5E6;
+            --dark: #2C3E50;
+            --gray: #5D6D7E;
+            --light-gray: #FFFFF0;
+            --success: #2ECC71;
+            --warning: #E67E22;
+            --info: #2E583C;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background: radial-gradient(circle at top left, rgba(46, 88, 60, 0.15), transparent 35%),
+                        linear-gradient(180deg, #f3f7f1 0%, #eef2f6 45%, #ffffff 100%);
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header with Enhanced Design */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--info));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--info));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Navigation with Mega Menu */
+        .main-nav {
+            position: relative;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .main-nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-content a {
+            padding: 1rem 1.5rem;
+            display: block;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--gray);
+        }
+
+        .nav-dropdown-content a:hover {
+            background: var(--light);
+            color: var(--primary);
+            padding-left: 2rem;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .main-nav a:hover {
+            color: var(--primary);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .main-nav a.active {
+            color: var(--primary);
+        }
+
+        .main-nav a.active::after {
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent), #d97706);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, #d97706, #b45309);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            margin-top: 80px;
+        }
+
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        /* Enhanced Hero Section */
+        .about-hero {
+            background: radial-gradient(circle at top left, rgba(23, 84, 63, 0.98), rgba(29, 105, 80, 0.95)),
+                        linear-gradient(135deg, #0d3f2a 0%, #071c14 100%);
+            color: white;
+            padding: 10rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -18%;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 65%);
+            border-radius: 50%;
+            animation: float 22s infinite ease-in-out;
+        }
+
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -28%;
+            left: -12%;
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(241, 196, 15, 0.18), transparent 70%);
+            border-radius: 50%;
+            animation: float 18s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100px, 100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-light {
+            background-color: white;
+        }
+
+        .section-gray {
+            background-color: var(--light-gray);
+        }
+
+        .section-dark {
+            background: linear-gradient(135deg, var(--dark), #0f172a);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 1rem;
+            position: relative;
+            color: var(--primary);
+        }
+
+        .section-dark .section-title h2 {
+            color: white;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Enhanced Timeline */
+        .story-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(-50px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(245, 158, 11, 0.1));
+            border-radius: 25px;
+            border: 2px solid var(--secondary);
+        }
+
+        /* Values Grid Enhancement */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background-color: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .value-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .value-card:hover .value-img img {
+            transform: scale(1.1);
+        }
+
+        .value-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .value-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--info));
+            color: white;
+            border-radius: var(--radius-md);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, var(--accent), #d97706);
+        }
+
+        /* Enhanced Statistics */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, white, var(--light));
+            padding: 2.5rem 1.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover::before {
+            opacity: 0.05;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: block;
+            line-height: 1;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .stat-item:hover .stat-number {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-text {
+            color: var(--gray);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Enhanced Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            height: 280px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Enhanced Video Tour Section */
+        .video-showcase {
+            margin-top: 3rem;
+        }
+
+        .main-video {
+            margin-bottom: 2rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(3, 18, 34, 0.18);
+            background: #050b14;
+        }
+
+        .video-wrapper video {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 560px;
+            object-fit: cover;
+            background: black;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(4, 8, 19, 0.92), rgba(4, 8, 19, 0.45));
+            color: white;
+            text-align: center;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            pointer-events: none;
+        }
+
+        .video-overlay[style] {
+            pointer-events: auto;
+        }
+
+        .play-btn {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 18px 38px rgba(5, 150, 105, 0.3);
+            cursor: pointer;
+            transition: transform 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .video-info {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .video-info h3 {
+            font-size: 1.9rem;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .video-info p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .video-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .thumbnail-item {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .thumbnail-item:hover, .thumbnail-item.active {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .thumbnail-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .thumbnail-info {
+            padding: 1rem;
+        }
+
+        .thumbnail-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .thumbnail-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            background: var(--light-gray);
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .video-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-highlight {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .feature-highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-highlight i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-highlight h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Student Life Section */
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .life-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+        }
+
+        .life-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .life-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .life-card:hover .life-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: var(--gradient-gold);
+        }
+
+        .life-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .life-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .life-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .highlight {
+            background: var(--light-gray);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .life-card:hover .highlight {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Principal's Message Section */
+        .message-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .principal-photo {
+            text-align: center;
+        }
+
+        .principal-photo img {
+            width: 250px;
+            height: 250px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--accent);
+        }
+
+        .message-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .message-quote {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .message-quote i.fa-quote-left {
+            font-size: 2rem;
+            color: var(--accent);
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            opacity: 0.3;
+        }
+
+        .message-quote i.fa-quote-right {
+            font-size: 2rem;
+            color: var(--accent);
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            opacity: 0.3;
+        }
+
+        .message-quote p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: white;
+            margin: 0;
+            padding: 0 2rem;
+        }
+
+        .principal-info h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .principal-title {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .principal-bio {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .principal-achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .achievement-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* Academic Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: var(--gradient-gold);
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .program-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .feature {
+            background: var(--light-gray);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .feature {
+            background: var(--primary);
+            color: white;
+        }
+
+        .academic-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .academic-stat {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .academic-stat .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .academic-stat .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* Leadership Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-photo {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-member:hover .member-photo img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 2rem;
+        }
+
+        .member-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .member-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .member-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Facilities Section */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .facility-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .facility-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--info));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .facility-card:hover .facility-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, var(--accent), #d97706);
+        }
+
+        /* Enhanced Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, var(--primary) 0%, #2d4fc4 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        .testimonials .section-title h2 {
+            color: white;
+        }
+
+        .testimonials .section-title h2::after {
+            background: var(--accent);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+            height: 400px;
+        }
+
+        .testimonial-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-item.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent);
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            flex-shrink: 0;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .author-info p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-nav button.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Awards & Recognition */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            color: black;
+        }
+
+        .award-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid transparent;
+        }
+
+        .award-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--accent);
+        }
+
+        .award-icon {
+            color: var(--accent);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Community Impact */
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .community-stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .community-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #0f172a);
+            color: white;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            transform: translateY(-99px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light-gray);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-3px) rotate(5deg);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .story-timeline::before {
+                left: 35px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 8rem 0 4rem;
+                min-height: 70vh;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 2rem;
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                z-index: 999;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: var(--primary);
+                cursor: pointer;
+                z-index: 1001;
+            }
+            
+            .mobile-toggle i {
+                transition: var(--transition);
+            }
+            
+            .mobile-toggle.active i {
+                transform: rotate(90deg);
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-stat {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .testimonial-item {
+                padding: 2rem;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .story-timeline::before {
+                left: 25px;
+            }
+        }
+
+        /* Loading Animation */
+     
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal for Gallery */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .link{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container header-container">
+            <a href="index.html" class="logo" class="link">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Liquidnet Family High School</h1>
+                    <p>Excellence in Education</p>
+                </div>
+            </a>
+            
+            <div class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#" class="active"><i class="fas fa-info-circle"></i> About <i class="fas fa-chevron-down"></i></a>
+                        <div class="nav-dropdown-content">
+                            <a href="#ourStory"><i class="fas fa-history"></i> Our History</a>
+                            <a href="#ourValues"><i class="fas fa-heart"></i> Our Values</a>
+                            <a href="#leadership"><i class="fas fa-users"></i> Leadership</a>
+                            <a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a>
+                        </div>
+                    </li>
+                    <li><a href="academic2.html"><i class="fas fa-graduation-cap"></i> Academics</a></li>
+                    <li><a href="school_admission.html"><i class="fas fa-user-graduate"></i> Admissions</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="cta-button" id="enrollButton">
+                <i class="fas fa-edit"></i> Enroll Now
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container breadcrumb-content">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>About Us</span>
+        </div>
+    </div>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Discover Liquidnet Family High School</h1>
+                <p data-aos="fade-up" data-aos-delay="200">For over 25 years, we've been dedicated to providing quality education, nurturing young minds, and building character through holistic learning experiences that prepare students for success in life and beyond.</p>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">25+</div>
+                        <div class="hero-stat-label">Years Excellence</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">1200+</div>
+                        <div class="hero-stat-label">Students</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">98%</div>
+                        <div class="hero-stat-label">Success Rate</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">75+</div>
+                        <div class="hero-stat-label">Qualified Staff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section-light" id="ourStory">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Journey Through Time</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">From humble beginnings to becoming a beacon of educational excellence, trace our remarkable journey of growth and achievement.</p>
+            <div class="story-timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <h3>A Vision Becomes Reality</h3>
+                        <p>Liquidnet Family High School opens as part of Agahozo-Shalom Youth Village, founded by Anne Heyman in response to Rwanda's 1994 Genocide. Built with $7.5 million from Liquidnet employees and their hands-on volunteerism.</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Original campus serves first cohort of vulnerable youth</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3>First Graduation - 100% Pass Rate</h3>
+                        <p>Our founding class achieves perfect pass rate on national exams, establishing LFHS's legacy of academic excellence despite students' profound trauma backgrounds.</p>
+                        <p><i class="fas fa-trophy"></i> National recognition begins</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>1,600+ Students Graduated</h3>
+                        <p>Expanding impact: Over 1,600 alumni now serve as doctors, engineers, educators, and social leaders across Rwanda and internationally.</p>
+                        <p><i class="fas fa-award"></i> 65% university admission rate</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <h3>Educational Resilience Program</h3>
+                        <p>LFHS begins sharing its "healing-centered" teaching methods with educators across Rwanda, extending impact beyond our campus.</p>
+                        <p><i class="fas fa-laptop-code"></i> Digital platforms for trauma-informed learning</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2026</div>
+                        <h3>18 Years of Transformation</h3>
+                        <p>From a vision of healing Rwanda's orphaned youth to a global model of trauma-informed education, LFHS continues to transform individual lives and rebuild national capacity.</p>
+                        <p><i class="fas fa-heart"></i> "If you see far, you will go far."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="section-gray" id="ourValues">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Core Values</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">These fundamental principles guide everything we do at Liquidnet Family High School, shaping our community and educational approach.</p>
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-img">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tikkun Ha'lev">
+                    </div>
+                    <div class="value-content">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Tikkun Ha'lev: Repairing the Heart</h3>
+                        <p>Recognizing that trauma prevents learning, we provide safe homes, nutritious meals, mental health support, and healing before academic advancement. Students dry their tears before they study.</p>
+                        <ul style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            <li><i class="fas fa-check"></i> Safe residential community</li>
+                            <li><i class="fas fa-check"></i> Mental health counseling</li>
+                            <li><i class="fas fa-check"></i> Enrichment year before academics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-img">
+                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tikkun Olam">
+                    </div>
+                    <div class="value-content">
+                        <div class="value-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Tikkun Olam: Repairing the World</h3>
+                        <p>Once healed, graduates give back. They become leaders—doctors, engineers, teachers, entrepreneurs—creating positive change across Rwanda. Service projects are core to our curriculum.</p>
+                        <ul style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            <li><i class="fas fa-check"></i> Community service projects</li>
+                            <li><i class="fas fa-check"></i> Alumni mentorship</li>
+                            <li><i class="fas fa-check"></i> Leadership development</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-img">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vision">
+                    </div>
+                    <div class="value-content">
+                        <div class="value-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>"If You See Far, You Will Go Far"</h3>
+                        <p>Our founding motto reminds every student that education and vision empower them to transcend hardship. By seeing far, they gain power to go far in life.</p>
+                        <ul style="margin-top: 1rem; color: var(--gray); font-size: 0.9rem;">
+                            <li><i class="fas fa-check"></i> Academic excellence</li>
+                            <li><i class="fas fa-check"></i> Long-term vision building</li>
+                            <li><i class="fas fa-check"></i> Global opportunity access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="section-light" id="statistics">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>School at a Glance</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Numbers that reflect our commitment to excellence in education and student development.</p>
+            <div class="stats-container">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <span class="stat-number" data-count="18">0</span>
+                    <div class="stat-text">Years of Impact (2008-2026)</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <span class="stat-number" data-count="1600">0</span>
+                    <div class="stat-text">Alumni Graduates</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <span class="stat-number" data-count="100">0</span>
+                    <div class="stat-text">National Exam Pass Rate %</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
+                    <span class="stat-number" data-count="65">0</span>
+                    <div class="stat-text">University Admission Rate %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Tour Section -->
+    <section class="section-gray" id="video-tour">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Experience LFHS: Virtual Campus Tour</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Take a comprehensive tour of our campus, meet our students and teachers, and see how we create a healing and learning environment that transforms lives.</p>
+            
+            <div class="video-showcase" data-aos="fade-up" data-aos-delay="400">
+                <div class="main-video">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata" playsinline poster="school.png" id="mainVideo">
+                            <source src="video.mp4" type="video/mp4">
+                            <source src="school_tour.webm" type="video/webm">
+                            Your browser does not support the video tag. 
+                            <a href="school_tour.mp4" download>Download the campus tour video</a> instead.
+                        </video>
+                        <div class="video-overlay" id="videoOverlay">
+                            <button class="play-btn" id="playBtn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>LFHS Campus Tour</h3>
+                                <p>Discover our modern facilities, dedicated teachers, and vibrant student community</p>
+                                <div class="video-meta">
+                                    <span><i class="fas fa-clock"></i> 5:30 minutes</span>
+                                    <span><i class="fas fa-calendar"></i> Updated 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-thumbnails">
+                    <div class="thumbnail-item active" data-video="video.mp4" data-title="Full Campus Tour" data-duration="5:30">
+                        <img src="school.png" alt="Campus Tour">
+                        <div class="thumbnail-info">
+                            <h4>Full Campus Tour</h4>
+                            <p>Complete walkthrough of our facilities</p>
+                            <span class="duration">5:30</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item" data-video="video.mp4" data-title="Student Life" data-duration="3:15">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student Life">
+                        <div class="thumbnail-info">
+                            <h4>Student Life</h4>
+                            <p>Daily activities and community</p>
+                            <span class="duration">3:15</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-item" data-video="academics.mp4" data-title="Academic Excellence" data-duration="4:20">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Academics">
+                        <div class="thumbnail-info">
+                            <h4>Academic Excellence</h4>
+                            <p>Our teaching methods and achievements</p>
+                            <span class="duration">4:20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-features" data-aos="fade-up" data-aos-delay="600">
+                <div class="feature-highlight">
+                    <i class="fas fa-film"></i>
+                    <h4>Professional Production</h4>
+                    <p>High-quality video showcasing real student experiences and authentic campus life</p>
+                </div>
+                <div class="feature-highlight">
+                    <i class="fas fa-language"></i>
+                    <h4>Multilingual</h4>
+                    <p>Available in English, French, and Kinyarwanda with subtitles</p>
+                </div>
+                <div class="feature-highlight">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile Optimized</h4>
+                    <p>Optimized for all devices - watch on desktop, tablet, or mobile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Life Section -->
+    <section class="section-light" id="student-life">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Student Life at LFHS</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Beyond academics, we nurture well-rounded individuals through diverse extracurricular activities and community engagement.</p>
+            
+            <div class="life-grid">
+                <div class="life-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="life-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3>Arts & Culture</h3>
+                    <p>Drama club, traditional dance, music ensembles, and visual arts programs that celebrate Rwandan heritage and global creativity.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">Annual Cultural Festival</span>
+                        <span class="highlight">Student Art Gallery</span>
+                        <span class="highlight">Music Competitions</span>
+                    </div>
+                </div>
+                
+                <div class="life-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="life-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>STEM Innovation</h3>
+                    <p>Robotics club, coding workshops, science fairs, and 3D design labs where students prototype solutions for real-world challenges.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">Robotics Championship</span>
+                        <span class="highlight">App Development</span>
+                        <span class="highlight">Science Olympiad</span>
+                    </div>
+                </div>
+                
+                <div class="life-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="life-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Leadership & Service</h3>
+                    <p>Student council, community service projects, peer mentoring, and leadership development programs that build character.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">Village Time Shows</span>
+                        <span class="highlight">Community Outreach</span>
+                        <span class="highlight">Youth Leadership</span>
+                    </div>
+                </div>
+                
+                <div class="life-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="life-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Sports & Athletics</h3>
+                    <p>Football, basketball, volleyball, track and field, and wellness programs promoting physical health and teamwork.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">District Champions</span>
+                        <span class="highlight">Fitness Programs</span>
+                        <span class="highlight">Sports Tournaments</span>
+                    </div>
+                </div>
+                
+                <div class="life-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="life-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Connections</h3>
+                    <p>International exchange programs, language clubs, and cultural immersion experiences that broaden worldviews.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">Exchange Programs</span>
+                        <span class="highlight">Language Clubs</span>
+                        <span class="highlight">Virtual Exchanges</span>
+                    </div>
+                </div>
+                
+                <div class="life-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="life-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Wellness & Support</h3>
+                    <p>Counseling services, mental health workshops, yoga sessions, and peer support networks for holistic well-being.</p>
+                    <div class="life-highlights">
+                        <span class="highlight">Mental Health Support</span>
+                        <span class="highlight">Wellness Workshops</span>
+                        <span class="highlight">Peer Counseling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal's Message -->
+    <section class="section-dark" id="principals-message">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>A Message from Our Principal</h2>
+            </div>
+            <div class="message-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="principal-photo">
+                    <img src="D2.png" alt="Principal Dr. Jean Paul" data-aos="fade-right">
+                </div>
+                <div class="message-content">
+                    <div class="message-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Education is not just about academic excellence; it's about transforming lives. At Liquidnet Family High School, we believe in healing first, then teaching. Our students arrive with heavy hearts from Rwanda's genocide, but they leave as confident leaders ready to rebuild their nation."</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="principal-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <p class="principal-title">School Principal</p>
+                        <p class="principal-bio">With over 20 years in education, Dr. Paul has dedicated his career to trauma-informed teaching. Under his leadership, LFHS has achieved Rwanda's highest national exam pass rates while pioneering healing-centered education models adopted across the region.</p>
+                        <div class="principal-achievements">
+                            <div class="achievement-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>100% Pass Rate - 18 Years</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-users"></i>
+                                <span>1,600+ Alumni Leaders</span>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-award"></i>
+                                <span>National Excellence Awards</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Programs -->
+    <section class="section-light" id="academic-programs">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Academic Excellence</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Our comprehensive curriculum combines academic rigor with practical skills, preparing students for university and beyond.</p>
+            
+            <div class="programs-grid">
+                <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Core Curriculum</h3>
+                    <p>Rwandan national curriculum with advanced English, Mathematics, Sciences, Social Studies, and Languages. All subjects taught with trauma-informed pedagogy.</p>
+                    <div class="program-features">
+                        <span class="feature">English Proficiency</span>
+                        <span class="feature">STEM Focus</span>
+                        <span class="feature">Critical Thinking</span>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="program-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science & Technology</h3>
+                    <p>Advanced laboratories for Physics, Chemistry, Biology, and Computer Science. Students participate in national science fairs and robotics competitions.</p>
+                    <div class="program-features">
+                        <span class="feature">Modern Labs</span>
+                        <span class="feature">Research Projects</span>
+                        <span class="feature">Innovation Hub</span>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="program-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Languages & Humanities</h3>
+                    <p>English, French, Kinyarwanda, and optional additional languages. Literature, history, geography, and moral education with global perspectives.</p>
+                    <div class="program-features">
+                        <span class="feature">Multilingual</span>
+                        <span class="feature">Cultural Studies</span>
+                        <span class="feature">Global Awareness</span>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="program-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Arts & Creativity</h3>
+                    <p>Visual arts, music, drama, and design thinking integrated into the curriculum. Students develop creative expression and problem-solving skills.</p>
+                    <div class="program-features">
+                        <span class="feature">Creative Expression</span>
+                        <span class="feature">Design Thinking</span>
+                        <span class="feature">Performance Arts</span>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="program-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Enrichment Year</h3>
+                    <p>Dedicated year for emotional healing and skill-building before advanced academics. Focus on English acquisition, IT skills, and personal development.</p>
+                    <div class="program-features">
+                        <span class="feature">Healing Focus</span>
+                        <span class="feature">Skill Building</span>
+                        <span class="feature">Personal Growth</span>
+                    </div>
+                </div>
+                
+                <div class="program-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="program-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career Preparation</h3>
+                    <p>University counseling, career guidance, entrepreneurship training, and professional skills development for future leaders.</p>
+                    <div class="program-features">
+                        <span class="feature">Career Counseling</span>
+                        <span class="feature">Leadership Training</span>
+                        <span class="feature">Entrepreneurship</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="academic-stats" data-aos="fade-up" data-aos-delay="900">
+                <div class="academic-stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">National Exam Pass Rate</div>
+                </div>
+                <div class="academic-stat">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">University Admission Rate</div>
+                </div>
+                <div class="academic-stat">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="section-gray" id="leadership">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Meet Our Leadership</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Our dedicated team of educators and administrators who guide our school towards excellence.</p>
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-photo">
+                        <img src="D2.png" alt="Principal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <div class="member-role">School Principal</div>
+                        <div class="member-bio">With 20+ years in education leadership, Dr. Paul has been instrumental in shaping our academic vision and community engagement.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Principal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <div class="member-role">School Principal</div>
+                        <div class="member-bio">With 20+ years in education leadership, Dr. Paul has been instrumental in shaping our academic vision and community engagement.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Principal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <div class="member-role">School Principal</div>
+                        <div class="member-bio">With 20+ years in education leadership, Dr. Paul has been instrumental in shaping our academic vision and community engagement.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-photo">
+                        <img src="D10.png" alt="Principal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <div class="member-role">School Principal</div>
+                        <div class="member-bio">With 20+ years in education leadership, Dr. Paul has been instrumental in shaping our academic vision and community engagement.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vice Principal">
+                    </div>
+                    <div class="member-info">
+                        <h3>Mrs. Marie Claire</h3>
+                        <div class="member-role">Vice Principal</div>
+                        <div class="member-bio">Specializing in curriculum development and student affairs, Mrs. Claire ensures every student receives personalized attention.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-photo">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Academic Director">
+                    </div>
+                    <div class="member-info">
+                        <h3>Mr. David N.</h3>
+                        <div class="member-role">Academic Director</div>
+                        <div class="member-bio">Leading our academic programs with innovative teaching methodologies and technology integration for modern learning.</div>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Facilities -->
+    <section class="section-light" id="facilities">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our State-of-the-Art Facilities</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Modern infrastructure designed to support holistic learning and development.</p>
+            <div class="facilities-grid">
+                <div class="facility-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="facility-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Smart Classrooms</h3>
+                    <p>Equipped with interactive whiteboards, digital learning tools, and high-speed internet for enhanced learning experiences.</p>
+                </div>
+                <div class="facility-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="facility-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science Laboratories</h3>
+                    <p>Modern labs for Physics, Chemistry, and Biology with latest equipment for practical scientific exploration.</p>
+                </div>
+                <div class="facility-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="facility-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Digital Library</h3>
+                    <p>Extensive collection of physical and digital resources with quiet study areas and research facilities.</p>
+                </div>
+                <div class="facility-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="facility-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Sports Complex</h3>
+                    <p>Football field, basketball court, indoor games area, and athletic track for comprehensive physical education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Gallery -->
+    <section class="section-gray" id="gallery">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Vibrant Campus</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Experience our beautiful campus through these snapshots of daily school life.</p>
+            <div class="gallery">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Classrooms">
+                    <div class="gallery-overlay">
+                        <h3>Modern Classrooms</h3>
+                        <p>Well-equipped learning spaces with natural lighting</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science Laboratories">
+                    <div class="gallery-overlay">
+                        <h3>Science Labs</h3>
+                        <p>Modern equipment for hands-on practical learning</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1519861531473-920034658307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sports Facilities">
+                    <div class="gallery-overlay">
+                        <h3>Sports Complex</h3>
+                        <p>Comprehensive facilities for physical development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Awards -->
+    <section class="section-dark" id="achievements">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Our Achievements</h2>
+            </div>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="200">Recognitions and awards that reflect our commitment to educational excellence.</p>
+            <div class="awards-grid">
+                <div class="award-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="award-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Best School Award 2023</h3>
+                    <p>National recognition for academic excellence and innovation in teaching methodologies.</p>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Green School Certification</h3>
+                    <p>Recognition for environmental conservation efforts and sustainable campus practices.</p>
+                </div>
+                <div class="award-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="award-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Digital Innovation Award</h3>
+                    <p>For excellence in integrating technology into teaching and learning processes.</p>
+                </div>
+            </div>
+            <div class="community-stats" data-aos="fade-up" data-aos-delay="500">
+                <div class="community-stat">
+                    <div class="community-stat-number">15+</div>
+                    <div class="stat-text">National Awards</div>
+                </div>
+                <div class="community-stat">
+                    <div class="community-stat-number">50+</div>
+                    <div class="stat-text">Sports Championships</div>
+                </div>
+                <div class="community-stat">
+                    <div class="community-stat-number">1000+</div>
+                    <div class="stat-text">University Admissions</div>
+                </div>
+                <div class="community-stat">
+                    <div class="community-stat-number">30+</div>
+                    <div class="stat-text">Community Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>What Our Community Says</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item active">
+                    <div class="testimonial-text">
+                        "Liquidnet Family High School has been instrumental in my child's development. The dedicated teachers and supportive environment have helped them excel both academically and personally. The school's focus on character building is truly remarkable."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Parent">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mrs. Amina Nzeyimana</h4>
+                            <p>Parent of Class of 2021 | Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "The education I received at Liquidnet Family High School prepared me for university and beyond. The school's emphasis on both academic excellence and moral values has been invaluable in my career as a software engineer. The teachers were mentors who truly cared."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alumni">
+                        </div>
+                        <div class="author-info">
+                            <h4>Jean Paul Habimana</h4>
+                            <p>Class of 2010 | Senior Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <div class="testimonial-text">
+                        "As a teacher at Liquidnet Family High School for 10 years, I've seen firsthand how the school's commitment to innovation in education transforms students' lives. The collaborative environment and continuous professional development make this a wonderful place to teach."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Teacher">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mr. Thomas Kabera</h4>
+                            <p>Mathematics Teacher | 10+ years at Liquidnet Family High School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-nav">
+                <button class="active"></button>
+                <button></button>
+                <button></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="galleryModal">
+        <div class="modal-content">
+            <img src="" alt="" id="modalImage">
+            <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-wave"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Liquidnet Family High School</h3>
+                    <p style="margin-bottom: 1.5rem; line-height: 1.8;">Transforming lives through education and healing since 2008. Part of Agahozo-Shalom Youth Village, empowering Rwanda's most vulnerable youth to become leaders. "If you see far, you will go far."</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/agahozoshalom" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/asyv" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/agahozoshalom" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@theasyv" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/agahozo-shalom-youth-village" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#ourStory"><i class="fas fa-chevron-right"></i> Our Story</a></li>
+                        <li><a href="#ourValues"><i class="fas fa-chevron-right"></i> Our Values</a></li>
+                        <li><a href="academic2.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                        <li><a href="school_admission.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                        <li><a href="index.html#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Liquidnet Family High School Campus<br>
+                           234 5th Avenue, 5th Floor, Suite 508<br>
+                           New York, NY 10001</p>
+                        <p><i class="fas fa-phone"></i> 631-317-1763</p>
+                        <p><i class="fas fa-envelope"></i> info@liquidnetfamilyhighschool.org.rw</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 7:30 AM - 5:00 PM</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p style="margin-bottom: 1.5rem;">Subscribe to stay updated with school news and events.</p>
+                    <form id="aboutNewsletterForm" action="http://localhost:3000/api/subscribe" method="POST" style="display: flex; gap: 0.5rem;">
+                        <input id="aboutNewsletterEmail" type="email" name="email" placeholder="Your email" style="flex: 1; padding: 0.8rem; border-radius: var(--radius-sm); border: none; background: rgba(255, 255, 255, 0.1); color: white;" required>
+                        <button type="submit" style="padding: 0.8rem 1.5rem; background: var(--accent); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Liquidnet Family High School. All Rights Reserved. | <a href="https://asyv.org" style="color: var(--accent);" target="_blank">asyv.org</a> | Email: lnfhs@asyv.org | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for transformation</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Enhanced JavaScript with modern features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect with throttle
+            const header = document.getElementById('mainHeader');
+            let scrollTimeout;
+            
+            function handleScroll() {
+                if (scrollTimeout) return;
+                
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    scrollTimeout = null;
+                }, 10);
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+
+            // Back to Top button
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Enhanced statistics counter with Intersection Observer
+            const statsSection = document.getElementById('statistics');
+            const counters = document.querySelectorAll('.stat-number');
+            let counted = false;
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !counted) {
+                        counted = true;
+                        animateStatistics();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statsObserver.observe(statsSection);
+
+            function animateStatistics() {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-count'));
+                    const suffix = counter.getAttribute('data-suffix') || '';
+                    let current = 0;
+                    const increment = target / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + suffix;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 20);
+                });
+            }
+
+            // Enhanced testimonial slider
+            const testimonials = document.querySelectorAll('.testimonial-item');
+            const navButtons = document.querySelectorAll('.testimonial-nav button');
+            let currentTestimonial = 0;
+            let autoSlideInterval;
+
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => {
+                    testimonial.classList.remove('active');
+                });
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                
+                currentTestimonial = index;
+                testimonials[currentTestimonial].classList.add('active');
+                navButtons[currentTestimonial].classList.add('active');
+            }
+
+            function nextTestimonial() {
+                let nextIndex = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(nextIndex);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextTestimonial, 5000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            // Initialize testimonial slider
+            testimonials.forEach((testimonial, index) => {
+                if (index !== 0) {
+                    testimonial.style.opacity = '0';
+                    testimonial.style.transform = 'translateX(50px)';
+                }
+            });
+
+            navButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    stopAutoSlide();
+                    showTestimonial(index);
+                    startAutoSlide();
+                });
+            });
+
+            startAutoSlide();
+
+            // Pause auto-slide on hover
+            const slider = document.querySelector('.testimonial-slider');
+            slider.addEventListener('mouseenter', stopAutoSlide);
+            slider.addEventListener('mouseleave', startAutoSlide);
+
+            // Mobile menu toggle with animation
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileToggle.addEventListener('click', () => {
+                mobileToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                
+                if (mainNav.classList.contains('active')) {
+                    mainNav.style.animation = 'fadeIn 0.3s ease';
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileToggle.contains(e.target) && !mainNav.contains(e.target)) {
+                    mobileToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                }
+            });
+
+            // Gallery modal functionality
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalClose = document.getElementById('modalClose');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.querySelector('img').src;
+                    modalImage.src = imgSrc;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Video play functionality
+            const playBtn = document.getElementById('playBtn');
+            const video = document.getElementById('mainVideo');
+            const videoOverlay = document.getElementById('videoOverlay');
+
+            if (playBtn && video) {
+                playBtn.addEventListener('click', () => {
+                    video.play();
+                    videoOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        videoOverlay.style.display = 'none';
+                    }, 300);
+                });
+
+                videoOverlay.addEventListener('click', (event) => {
+                    if (event.target === videoOverlay || event.target.closest('.play-btn')) {
+                        video.play();
+                        videoOverlay.style.opacity = '0';
+                        setTimeout(() => {
+                            videoOverlay.style.display = 'none';
+                        }, 300);
+                    }
+                });
+
+                video.addEventListener('ended', () => {
+                    videoOverlay.style.display = 'flex';
+                    videoOverlay.style.opacity = '1';
+                });
+
+                video.addEventListener('pause', () => {
+                    if (video.currentTime !== video.duration) {
+                        videoOverlay.style.display = 'flex';
+                        videoOverlay.style.opacity = '1';
+                    }
+                });
+            }
+
+            // Video thumbnail switching
+            const thumbnailItems = document.querySelectorAll('.thumbnail-item');
+            const mainVideo = document.getElementById('mainVideo');
+            const videoInfo = document.querySelector('.video-info');
+            const videoMeta = document.querySelector('.video-meta');
+
+            thumbnailItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove active class from all thumbnails
+                    thumbnailItems.forEach(thumb => thumb.classList.remove('active'));
+                    // Add active class to clicked thumbnail
+                    item.classList.add('active');
+
+                    // Update main video
+                    const videoSrc = item.getAttribute('data-video');
+                    const title = item.getAttribute('data-title');
+                    const duration = item.getAttribute('data-duration');
+
+                    // Update video source
+                    mainVideo.querySelector('source[type="video/mp4"]').src = videoSrc;
+                    mainVideo.load();
+
+                    // Update video info
+                    videoInfo.querySelector('h3').textContent = title;
+                    videoInfo.querySelector('p').textContent = `Explore ${title.toLowerCase()} at Liquidnet Family High School`;
+
+                    // Update video meta
+                    videoMeta.innerHTML = `
+                        <span><i class="fas fa-clock"></i> ${duration} minutes</span>
+                        <span><i class="fas fa-calendar"></i> Updated 2024</span>
+                    `;
+
+                    // Reset video overlay
+                    videoOverlay.style.display = 'flex';
+                    videoOverlay.style.opacity = '1';
+
+                    // Show toast
+                    showToast(`Switched to: ${title}`, 'info');
+                });
+            });
+
+            // Toast notification function
+            function showToast(message, type = 'success') {
+                // Create toast element if it doesn't exist
+                let toast = document.getElementById('toast');
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.id = 'toast';
+                    toast.className = 'toast';
+                    document.body.appendChild(toast);
+                }
+
+                toast.textContent = message;
+                toast.style.background = type === 'success' ? 'var(--success)' : 
+                                       type === 'error' ? 'var(--secondary)' : 
+                                       type === 'warning' ? 'var(--warning)' : 
+                                       type === 'info' ? 'var(--info)' : 'var(--primary)';
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            // Smooth scrolling with offset for fixed header
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 768) {
+                            mobileToggle.classList.remove('active');
+                            mainNav.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // Enroll button functionality
+            document.getElementById('enrollButton').addEventListener('click', () => {
+                window.location.href = 'school_admission.html';
+            });
+
+            // Newsletter subscription
+            const aboutNewsletterForm = document.getElementById('aboutNewsletterForm');
+            if (aboutNewsletterForm) {
+                aboutNewsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = aboutNewsletterForm.querySelector('input[name="email"]').value.trim();
+
+                    if (!email || !email.includes('@')) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+
+                    fetch(aboutNewsletterForm.action, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert(`Thank you for subscribing with: ${email}`);
+                            aboutNewsletterForm.reset();
+                        } else {
+                            return response.json().then(data => {
+                                throw new Error(data.error || 'Subscription failed.');
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Subscription error:', error);
+                        alert('Unable to subscribe right now. Please try again later.');
+                    });
+                });
+            }
+
+            // Add active class to current section in navigation
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+            
+            function highlightCurrentSection() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href');
+                    if (href === `#${current}` || (current === '' && href === '#ourStory')) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightCurrentSection);
+            highlightCurrentSection();
+
+            // Parallax effect for hero section
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                document.querySelector('.about-hero').style.transform = `translateY(${rate}px)`;
+            }
+            
+            window.addEventListener('scroll', updateParallax);
+
+            // Add hover effect to gallery items
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Initialize counters on page load if already in view
+            if (statsSection.getBoundingClientRect().top < window.innerHeight) {
+                animateStatistics();
+            }
+        });
+
+        // Add keyboard navigation for accessibility
+        document.addEventListener('keydown', (e) => {
+            // Escape key closes modal
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('galleryModal');
+                if (modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            // Arrow keys for testimonial navigation
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                const testimonials = document.querySelectorAll('.testimonial-item');
+                let currentIndex = Array.from(testimonials).findIndex(item => item.classList.contains('active'));
+                
+                if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % testimonials.length;
+                }
+                
+                document.querySelectorAll('.testimonial-item').forEach(item => item.classList.remove('active'));
+                document.querySelectorAll('.testimonial-nav button').forEach(btn => btn.classList.remove('active'));
+                
+                testimonials[currentIndex].classList.add('active');
+                document.querySelectorAll('.testimonial-nav button')[currentIndex].classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

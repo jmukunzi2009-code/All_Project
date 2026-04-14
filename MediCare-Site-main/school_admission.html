@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidnet Family High School | Admissions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            background-color: var(--accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .nav-links a.active {
+            background-color: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Hero Section */
+        .admission-hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.95)), 
+                        url('') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4);
+            background-color: #e68900;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Admission Process */
+        .admission-process {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Requirements */
+        .requirements {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .requirement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-left: 5px solid var(--accent);
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .requirement-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirement-card h3 i {
+            color: var(--accent);
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirement-list li i {
+            color: var(--success);
+        }
+
+        /* Age Groups */
+        .age-groups {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .groups-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .group-card {
+            background: linear-gradient(135deg, var(--light), #e2e8f0);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .group-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .group-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .group-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .group-age {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Fees Structure */
+        .fees-structure {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .fees-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .fees-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fees-table th {
+            background: linear-gradient(to right, var(--primary), #2d4fc4);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .fees-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fees-table tr:hover {
+            background-color: rgba(30, 58, 138, 0.05);
+        }
+
+        .fees-table .highlight {
+            background-color: rgba(245, 158, 11, 0.1);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Application Form */
+        .application-form {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary), #2d4fc4);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--gray);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>G.S <span>NYAMTEKE</span></h1>
+                    <p>Excellence in Education</p>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="school_about.html">About</a></li>
+                <li><a href="school_admission.html" class="active">Admissions</a></li>
+                <li><a href="index.html">Academics</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="admission-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Liquidnet Family High School Admissions</h1>
+                <p>Begin your child's journey towards academic excellence, character development, and lifelong success. Discover our admission process, requirements, and join our vibrant learning community.</p>
+                <a href="#apply" class="btn">Apply Now</a>
+                <a href="#process" class="btn btn-secondary">Learn About Process</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="admission-process" id="process">
+        <div class="container">
+            <h2 class="section-title">Admission Process</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Application</h3>
+                    <p>Submit the online application form with required documents</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Assessment</h3>
+                    <p>Schedule and complete the entrance assessment and interview</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Review</h3>
+                    <p>Our admissions committee reviews the complete application</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Decision</h3>
+                    <p>Receive admission decision and enrollment package</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="requirements">
+        <div class="container">
+            <h2 class="section-title">Admission Requirements</h2>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h3><i class="fas fa-file-signature"></i> Documents Required</h3>
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check-circle"></i> Completed application form</li>
+                        <li><i class="fas fa-check-circle"></i> Birth certificate copy</li>
+                        <li><i class="fas fa-check-circle"></i> Previous school reports</li>
+                        <li><i class="fas fa-check-circle"></i> Passport-sized photos (4)</li>
+                        <li><i class="fas fa-check-circle"></i> Medical health certificate</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h3><i class="fas fa-user-graduate"></i> Age Requirements</h3>
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check-circle"></i> Nursery: 3-4 years</li>
+                        <li><i class="fas fa-check-circle"></i> Kindergarten: 5-6 years</li>
+                        <li><i class="fas fa-check-circle"></i> Primary 1: 6-7 years</li>
+                        <li><i class="fas fa-check-circle"></i> Primary 6: 11-12 years</li>
+                        <li><i class="fas fa-check-circle"></i> Secondary: 13+ years</li>
+                    </ul>
+                </div>
+                <div class="requirement-card">
+                    <h3><i class="fas fa-clipboard-list"></i> Assessment Criteria</h3>
+                    <ul class="requirement-list">
+                        <li><i class="fas fa-check-circle"></i> Academic performance</li>
+                        <li><i class="fas fa-check-circle"></i> Entrance examination</li>
+                        <li><i class="fas fa-check-circle"></i> Interview with student</li>
+                        <li><i class="fas fa-check-circle"></i> Parent meeting</li>
+                        <li><i class="fas fa-check-circle"></i> Previous school reference</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Age Groups -->
+    <section class="age-groups">
+        <div class="container">
+            <h2 class="section-title">Programs by Age Group</h2>
+            <div class="groups-container">
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="group-age">3-4 Years</div>
+                    <h3>Early Years</h3>
+                    <p>Nursery & Preschool program focusing on foundational skills through play-based learning</p>
+                </div>
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="group-age">5-11 Years</div>
+                    <h3>Primary School</h3>
+                    <p>Comprehensive primary education with focus on literacy, numeracy, and character building</p>
+                </div>
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="group-age">12-18 Years</div>
+                    <h3>Secondary School</h3>
+                    <p>Advanced academic program preparing students for national examinations and beyond</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fees Structure -->
+    <section class="fees-structure">
+        <div class="container">
+            <h2 class="section-title">Tuition & Fees Structure</h2>
+            <div class="fees-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Tuition Fee</th>
+                            <th>Registration</th>
+                            <th>Development Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nursery</td>
+                            <td>$500 / term</td>
+                            <td>$100 (once)</td>
+                            <td>$50 / term</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Kindergarten</td>
+                            <td>$600 / term</td>
+                            <td>$100 (once)</td>
+                            <td>$60 / term</td>
+                        </tr>
+                        <tr>
+                            <td>Primary 1-3</td>
+                            <td>$700 / term</td>
+                            <td>$150 (once)</td>
+                            <td>$70 / term</td>
+                        </tr>
+                        <tr>
+                            <td>Primary 4-6</td>
+                            <td>$800 / term</td>
+                            <td>$150 (once)</td>
+                            <td>$80 / term</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Secondary</td>
+                            <td>$900 / term</td>
+                            <td>$200 (once)</td>
+                            <td>$100 / term</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray);">
+                <i class="fas fa-info-circle" style="color: var(--info);"></i> 
+                All fees are per term (3 terms per year). Payment plans and scholarships available.
+            </p>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application-form" id="apply">
+        <div class="container">
+            <h2 class="section-title">Online Application Form</h2>
+            <div class="form-container">
+                <form id="admissionForm" action="http://localhost:3000/api/admission" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName"><i class="fas fa-user"></i> Student's First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName"><i class="fas fa-user"></i> Student's Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate"><i class="fas fa-birthday-cake"></i> Date of Birth *</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender"><i class="fas fa-venus-mars"></i> Gender *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade"><i class="fas fa-graduation-cap"></i> Grade Applying For *</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select Grade Level</option>
+                            <option value="nursery">Nursery</option>
+                            <option value="kindergarten">Kindergarten</option>
+                            <option value="primary1">Primary 1</option>
+                            <option value="primary2">Primary 2</option>
+                            <option value="primary3">Primary 3</option>
+                            <option value="primary4">Primary 4</option>
+                            <option value="primary5">Primary 5</option>
+                            <option value="primary6">Primary 6</option>
+                            <option value="secondary">Secondary 1</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentName"><i class="fas fa-users"></i> Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentPhone"><i class="fas fa-phone"></i> Phone Number *</label>
+                            <input type="tel" id="parentPhone" name="parentPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="previousSchool"><i class="fas fa-school"></i> Previous School (if applicable)</label>
+                        <input type="text" id="previousSchool" name="previousSchool">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Additional Information</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Admissions Office Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Liquidnet Family High School Campus<br>234 5th Avenue, 5th Floor, Suite 508<br>New York, NY 10001</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Admissions: 631-317-1763<br>Office: +250 987 654 321<br>Mon-Fri: 8:00 AM - 4:00 PM</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Admissions: admissions@liquidnetfamilyhighschool.org<br>Information: info@liquidnetfamilyhighschool.org<br>Response within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Liquidnet Family High School</h3>
+                    <p>Transforming lives through education and healing since 2008. Part of Agahozo-Shalom Youth Village.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/agahozoshalom" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/asyv" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/agahozoshalom" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@theasyv" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="academic2.html">Home</a></li>
+                        <li><a href="school_about.html">About School</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="academic2.html">Academic Programs</a></li>
+                        <li><a href="academic2.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Important Dates</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">2024 Admissions Open: Jan 15</a></li>
+                        <li><a href="#">Entrance Exams: March 10</a></li>
+                        <li><a href="#">Term Starts: April 1</a></li>
+                        <li><a href="#">Scholarship Deadline: Feb 28</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Liquidnet Family High School. All Rights Reserved. | <a href="https://asyv.org" style="color: var(--accent);" target="_blank">asyv.org</a> | lnfhs@asyv.org | <a href="#" style="color: var(--accent);">Privacy Policy</a></p>
+                <p style="margin-top: 0.5rem;">Accredited by Ministry of Education | Member of National Schools Association</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const payload = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                birthDate: document.getElementById('birthDate').value,
+                gender: document.getElementById('gender').value,
+                grade: document.getElementById('grade').value,
+                parentName: document.getElementById('parentName').value,
+                parentPhone: document.getElementById('parentPhone').value,
+                email: document.getElementById('email').value,
+                previousSchool: document.getElementById('previousSchool').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch(this.action, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Thank you ${payload.firstName} ${payload.lastName}! Your application for ${payload.grade} has been submitted successfully. Our admissions team will contact you within 48 hours.`);
+                    this.reset();
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Failed to submit application.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Admission form error:', error);
+                alert('Unable to submit your application right now. Please try again later.');
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add animation to cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Observe cards for animation
+        document.querySelectorAll('.step-card, .requirement-card, .group-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

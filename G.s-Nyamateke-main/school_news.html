@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.S Nyamateke - School News Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
+            border: 3px solid var(--accent);
+        }
+
+        .school-name h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .school-name p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 8px 15px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            width: 200px;
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 350px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin-top: 10px;
+            display: none;
+            z-index: 101;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results.active {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .search-result-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--light-gray);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 5px;
+        }
+
+        .search-result-item:hover {
+            background-color: var(--light-gray);
+            transform: translateX(5px);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .search-result-category {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 50px;
+            background-color: var(--light-gray);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .user-menu:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .user-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin-top: 10px;
+            width: 220px;
+            display: none;
+            z-index: 101;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .user-dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+
+        .user-dropdown a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+
+        .user-dropdown a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav li {
+            position: relative;
+        }
+
+        .main-nav a {
+            display: block;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .main-nav a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+
+        .main-nav a.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .nav-cta {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: #e59400;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        .page-title {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .page-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: var(--light-gray);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Events Display Grid */
+        .events-display-section {
+            margin-bottom: 3rem;
+        }
+
+        .events-display-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-display-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .event-display-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-display-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .event-display-card .event-months {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .event-display-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .event-display-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--light-gray);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .news-category.academic {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--info);
+        }
+
+        .news-category.sports {
+            background-color: rgba(220, 38, 38, 0.1);
+            color: var(--secondary);
+        }
+
+        .news-category.events {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+        }
+
+        .news-category.achievements {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .news-category.announcements {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-read-more {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .news-read-more:hover {
+            color: var(--secondary);
+            gap: 10px;
+        }
+
+        /* Featured News */
+        .featured-news {
+            margin-bottom: 50px;
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-image {
+            height: 400px;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-category {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        /* Upcoming Events */
+        .events-section {
+            margin-bottom: 50px;
+        }
+
+        .events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .event-date .months {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .event-date .category {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            text-transform: capitalize;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .event-details {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .event-cta {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--light-gray);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .event-cta:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Modal for full article */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 25px 30px 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .modal-category {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .modal-content {
+            padding: 25px 30px;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-body {
+            line-height: 1.8;
+            color: var(--dark);
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul, .modal-body ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background-color: var(--light-gray);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1001;
+            max-width: 350px;
+        }
+
+        .notification.active {
+            display: flex;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .notification.warning {
+            background-color: var(--warning);
+        }
+
+        .notification.info {
+            background-color: var(--info);
+        }
+
+        .notification.error {
+            background-color: var(--secondary);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--light-gray);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Stats Counter */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                height: 300px;
+            }
+            
+            .stats-container {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box input {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .page-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .filter-controls {
+                justify-content: flex-start;
+            }
+            
+            .search-results {
+                width: 280px;
+            }
+        }
+
+        /* ========== ADMIN PANEL ========== */
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .no-print {
+            display: block !important;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-name">
+                    <h1>G.S Nyamateke</h1>
+                    <p>Excellence in Education Since 1985</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search news, events...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="search-results" id="search-results">
+                        <!-- Search results will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="user-menu" id="user-menu">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span id="user-name">Parent Portal</span>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" id="profile-link"><i class="fas fa-user-circle"></i> My Profile</a>
+                        <a href="#" id="events-link"><i class="fas fa-calendar-alt"></i> My Events</a>
+                        <a href="#" id="notifications-link"><i class="fas fa-bell"></i> Notifications <span id="notification-count" class="notification-count"></span></a>
+                        <a href="#" id="settings-link"><i class="fas fa-cog"></i> Settings</a>
+                        
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="main-nav">
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="school_news.html"><i class="fas fa-newspaper"></i> News</a></li>
+                <li><a href="school_events.html"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                <li><a href="index.html"><i class="fas fa-user-graduate"></i> Academics</a></li>
+                <li><a href="index.html"><i class="fas fa-futbol"></i> Sports</a></li>
+                <li><a href="index.html"><i class="fas fa-users"></i> Community</a></li>
+                <li><a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <a href="#" class="nav-cta" id="calendar-download">
+                <i class="fas fa-download"></i> <span id="calendar-text">School Calendar</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to G.S Nyamateke News Portal</h2>
+                <p>Stay updated with the latest school announcements, academic achievements, sports events, and community activities.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="subscribe-btn">
+                        <i class="fas fa-bell"></i> <span id="subscribe-text">Subscribe to Updates</span>
+                    </button>
+                    <button class="btn btn-secondary" id="view-calendar-btn">
+                        <i class="fas fa-calendar-check"></i> View Events Calendar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container" id="stats-container">
+                <!-- Stats will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Events Display -->
+        <section class="events-display-section">
+            <div class="page-title">
+                <h2><i class="fas fa-calendar-alt"></i> School Events</h2>
+            </div>
+            <div class="events-display-grid" id="events-display-grid">
+                <!-- Events will be displayed here -->
+            </div>
+        </section>
+
+        <!-- Featured News -->
+        <section class="featured-news">
+            <div class="page-title">
+                <h2><i class="fas fa-star"></i> Featured News</h2>
+                <div class="loading-spinner" id="featured-loading"></div>
+            </div>
+            
+            <div class="featured-card" id="featured-article">
+                <!-- Featured content will be dynamically loaded -->
+            </div>
+        </section>
+
+        <!-- Latest News -->
+        <section class="latest-news">
+            <div class="page-title">
+                <h2><i class="fas fa-newspaper"></i> Latest News</h2>
+                <div class="filter-controls" id="filter-controls">
+                    <!-- Filter buttons will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="loading-spinner" id="news-loading"></div>
+            <div class="news-grid" id="news-grid">
+                <!-- News cards will be dynamically added here -->
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-secondary" id="load-more-news">Load More News</button>
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section class="events-section">
+            <div class="page-title">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+                <button class="btn btn-primary" id="sync-calendar-btn">
+                    <i class="fas fa-sync-alt"></i> Sync Calendar
+                </button>
+            </div>
+            
+            <div class="loading-spinner" id="events-loading"></div>
+            <div class="events-list" id="events-list">
+                <!-- Event cards will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for full article -->
+    <div class="modal-overlay" id="article-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Article Title</h2>
+                <span class="modal-category" id="modal-category">Category</span>
+                <div style="margin-top: 10px; color: var(--gray); font-size: 0.9rem;">
+                    <i class="far fa-calendar"></i> <span id="modal-date">Date</span> | 
+                    <i class="fas fa-user"></i> <span id="modal-author">Author</span>
+                </div>
+            </div>
+            <div class="modal-content">
+                <img class="modal-image" id="modal-image" src="" alt="">
+                <div class="modal-body" id="modal-body">
+                    <!-- Article content will be dynamically added here -->
+                </div>
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--light-gray);">
+                    <button class="btn btn-primary" id="share-article-btn">
+                        <i class="fas fa-share-alt"></i> Share This Article
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle" id="notification-icon"></i>
+        <span id="notification-message">Operation completed successfully!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>G.S Nyamateke</h3>
+                    <p>123 Education Avenue, Kirehe District</p>
+                    <p><i class="fas fa-phone"></i> +250 783311477</p>
+                    <p><i class="fas fa-envelope"></i> nyamatekegs@gmail.com</p>
+                    <div class="social-icons">
+                        
+                        <a href="https://www.youtube.com/@g.snyamateke1391" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#events" id="footer-calendar"><i class="fas fa-chevron-right"></i> School Calendar</a></li>
+                        <li><a href="school_about.html#leadershiop" id="footer-directory"><i class="fas fa-chevron-right"></i> Staff Directory</a></li>
+                        <li><a href="school_news.html" id="footer-portal"><i class="fas fa-chevron-right"></i> Parent Portal</a></li>
+                        <li><a href="school_news.html" id="footer-student"><i class="fas fa-chevron-right"></i> Student Portal</a></li>
+                        <li><a href="#" id="footer-menu"><i class="fas fa-chevron-right"></i> Cafeteria Menu</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="school_about.html#leadership" id="footer-departments"><i class="fas fa-chevron-right"></i> Academic Departments</a></li>
+                        <li><a href="#" id="footer-library"><i class="fas fa-chevron-right"></i> Library Resources</a></li>
+                        <li><a href="#" id="footer-college"><i class="fas fa-chevron-right"></i> College Counseling</a></li>
+                        <li><a href="school_news.html" id="footer-athletics"><i class="fas fa-chevron-right"></i> Athletics Schedule</a></li>
+                        <li><a href="school_admission.html" id="footer-policies"><i class="fas fa-chevron-right"></i> School Policies</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive the latest news and updates directly to your inbox.</p>
+                    <div class="search-box" style="margin-top: 15px; background-color: rgba(255,255,255,0.1);">
+                        <input type="text" id="newsletter-email" placeholder="Your email address">
+                        <button id="newsletter-subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <p style="margin-top: 10px; font-size: 0.8rem; color: var(--light-gray);" id="newsletter-status"></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year">2026</span> G.S Nyamateke. All rights reserved. | <a href="#" style="color: var(--accent);" id="privacy-link">Privacy Policy</a> | <a href="#" style="color: var(--accent);" id="terms-link">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel no-print">
+        <button class="admin-btn" id="adminBtn">
+            <i class="fas fa-cog"></i>
+        </button>
+    </div>
+
+    <!-- Admin Modal -->
+    <div style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;" id="adminModal">
+        <div style="background-color: white; border-radius: 15px; padding: 3rem; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative;">
+            <button style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer;" id="closeAdminModal">&times;</button>
+            <h2 style="color: var(--primary); margin-bottom: 2rem;">Admin Panel - School Code: 551203</h2>
+            
+            <div id="accessCodeForm">
+                <p style="margin-bottom: 1.5rem;">Enter admin access code to manage news articles:</p>
+                <input type="password" id="adminCode" placeholder="Enter code 551203" style="width: 100%; padding: 1rem; border-radius: 8px; border: 2px solid var(--light-gray); margin-bottom: 1.5rem; font-size: 1.1rem;">
+                <button class="btn btn-primary" id="verifyCodeBtn" style="width: 100%; padding: 1rem;">Access Admin Panel</button>
+            </div>
+            
+            <div id="adminPanel" style="display: none;">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1rem;">
+                    <button class="btn btn-primary" id="addArticleBtn">Add New Article</button>
+                    <button class="btn btn-outline" id="manageArticlesBtn">Manage Articles</button>
+                    <button class="btn btn-outline" id="logoutAdminBtn">Logout</button>
+                </div>
+                
+                <!-- Add Article Form -->
+                <div id="addArticleForm" style="display: none;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Add New Article</h3>
+                    <form id="articleForm">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Title:</label>
+                            <input type="text" id="articleTitle" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 2px solid var(--light-gray);">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Category:</label>
+                            <select id="articleCategory" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 2px solid var(--light-gray);">
+                                <option value="Academics">Academics</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Events">Events</option>
+                                <option value="Achievements">Achievements</option>
+                                <option value="Announcements">Announcements</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Content:</label>
+                            <textarea id="articleContent" required rows="6" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 2px solid var(--light-gray);"></textarea>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Image URL:</label>
+                            <input type="url" id="articleImage" placeholder="https://example.com/image.jpg" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 2px solid var(--light-gray);">
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Author:</label>
+                            <input type="text" id="articleAuthor" value="School Administration" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 2px solid var(--light-gray);">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Article</button>
+                        <button type="button" class="btn btn-outline" id="cancelAddArticle" style="margin-left: 1rem;">Cancel</button>
+                    </form>
+                </div>
+                
+                <!-- Manage Articles -->
+                <div id="manageArticles" style="display: none;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Manage Articles</h3>
+                    <div id="articlesList" style="max-height: 400px; overflow-y: auto;">
+                        <!-- Articles will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced School News Data for G.S Nyamateke
+        const newsData = {
+            featured: {
+                id: 1,
+                title: "G.S Nyamateke Students Win National Science Competition",
+                category: "Academic Excellence",
+                categoryClass: "academic",
+                excerpt: "Our students secured first place in the National Science Competition with their innovative water purification project, earning a scholarship for further research.",
+                fullContent: `<p>G.S Nyamateke has once again demonstrated academic excellence as our science team clinched the top position at the National Science Competition held in Kigali last week. The team, comprising students from Senior 4 and 5, presented an innovative low-cost water purification system designed for rural communities.</p>
+                <p>The project, titled "AquaPure Rwanda," uses locally available materials like moringa seeds and volcanic rock to filter and purify water, achieving 99.8% removal of contaminants. What impressed the judges most was the practical application and scalability of the solution for communities across Rwanda.</p>
+                <p>"This achievement reflects our commitment to practical, solution-oriented education," said Headmaster Jean-Paul Ndayisaba. "Our students are not just learning theory; they're solving real-world problems facing our communities."</p>
+                <p>The victory comes with several rewards:</p>
+                <ul>
+                    <li>A scholarship fund of 5 million RWF for further research and development</li>
+                    <li>An invitation to present at the Pan-African Science Fair in Nairobi</li>
+                    <li>Partnership opportunities with the Ministry of Education and Rwanda Environment Authority</li>
+                    <li>Recognition certificates for all team members and their science teacher</li>
+                </ul>
+                <p>The winning team members are: Marie Uwase (Team Leader), Eric Niyomugabo, Grace Mugeni, and Samuel Habimana. They will be honored at a special assembly next Friday, where they will demonstrate their project to the entire school community.</p>
+                <p>This marks the third consecutive year G.S Nyamateke has placed in the top three at national science competitions, cementing our reputation as a center for STEM excellence in the region.</p>`,
+                image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                date: "May 22, 2023",
+                author: "Headmaster Jean-Paul Ndayisaba",
+                views: 1247,
+                shares: 89
+            },
+            articles: [
+                {
+                    id: 2,
+                    title: "New Computer Lab Opens with 40 Modern Workstations",
+                    category: "Academics",
+                    categoryClass: "academic",
+                    excerpt: "Our school has inaugurated a state-of-the-art computer lab equipped with high-speed internet and modern educational software for all students.",
+                    fullContent: `<p>G.S Nyamateke took a significant step forward in digital education with the official opening of our new computer laboratory yesterday. Funded through a partnership with the Rwanda Education Board and local tech companies, the lab features 40 modern workstations, high-speed fiber internet, and specialized educational software.</p>
+                    <p>The inauguration ceremony was attended by district education officers, parent representatives, and students. During the event, Senior 5 students demonstrated their programming skills by creating a simple educational game about Rwandan history.</p>
+                    <p>Computer Studies teacher Mr. Patrick Nkurunziza explained the lab's capabilities: "We now have the infrastructure to teach proper computer science, not just basic computer literacy. Students can learn programming, digital design, data analysis, and even basic artificial intelligence concepts."</p>
+                    <p>The lab will support:</p>
+                    <ul>
+                        <li>Computer studies for all secondary levels</li>
+                        <li>ICT integration across all subjects</li>
+                        <li>After-school coding clubs and robotics team</li>
+                        <li>Teacher training in digital pedagogy</li>
+                        <li>Community computer literacy programs on weekends</li>
+                    </ul>
+                    <p>To ensure equitable access, the lab will operate on a strict schedule that gives every class regular access. Special evening and weekend sessions will be available for students who need extra practice or want to work on projects.</p>
+                    <p>This development aligns with Rwanda's vision to become a knowledge-based economy and ensures our students are competitive in the digital age.</p>`,
+                    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "May 18, 2023",
+                    author: "Mr. Patrick Nkurunziza",
+                    views: 892,
+                    shares: 45
+                },
+                {
+                    id: 3,
+                    title: "School Football Team Qualifies for Regional Championships",
+                    category: "Sports",
+                    categoryClass: "sports",
+                    excerpt: "After an undefeated season, our football team has qualified for the East African Regional School Championships to be held in Kampala next month.",
+                    fullContent: `<p>G.S Nyamateke's football team, "The Nyamateke Lions," has made school history by qualifying for the East African Regional School Championships for the first time. The team secured their spot after maintaining an undefeated record throughout the district and provincial competitions.</p>
+                    <p>The final qualifying match against G.S Kigali ended 3-1 in our favor, with two goals from team captain Fabrice Nsengiyumva and one from midfielder Alice Uwase. The victory was particularly sweet as it avenged last year's defeat in the provincial finals.</p>
+                    <p>Coach Emmanuel Mudenge praised the team's dedication: "These students have trained tirelessly since last year. Many arrive at 5 AM for practice before classes and stay late for conditioning. Their discipline and teamwork have been exceptional."</p>
+                    <p>Key factors in the team's success:</p>
+                    <ul>
+                        <li>Strategic partnerships with local sports organizations for professional training</li>
+                        <li>Improved sports facilities including a renovated pitch</li>
+                        <li>Balanced academic support ensuring players maintain good grades</li>
+                        <li>Strong school spirit with consistent fan support at matches</li>
+                    </ul>
+                    <p>The regional championships will take place in Kampala, Uganda from June 15-22. The school is organizing fundraising activities to support travel expenses, and several local businesses have already pledged sponsorship. A send-off ceremony is planned for June 10, where the team will receive their official kits and blessings from the school community.</p>
+                    <p>This achievement follows recent investments in school sports facilities and demonstrates the value of a balanced education that develops both mind and body.</p>`,
+                    image: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "May 15, 2023",
+                    author: "Coach Emmanuel Mudenge",
+                    views: 1103,
+                    shares: 112
+                },
+                {
+                    id: 4,
+                    title: "Annual Cultural Day Celebrates Rwandan Heritage",
+                    category: "Events",
+                    categoryClass: "events",
+                    excerpt: "Students showcased traditional dance, music, crafts, and cuisine during our vibrant Cultural Day celebration attended by parents and community leaders.",
+                    fullContent: `<p>G.S Nyamateke was transformed into a celebration of Rwandan culture during our annual Cultural Day last Friday. The event, themed "Ubumwe n'Ubwuzuzanye" (Unity and Mutual Support), featured performances, exhibitions, and demonstrations highlighting Rwanda's rich heritage.</p>
+                    <p>Students from all levels participated, wearing traditional attire and showcasing skills in traditional dance (including Intore and Umushagiriro), drumming, basket weaving, pottery, and cooking traditional dishes. Parents and community members filled the school grounds to witness the displays and sample student-prepared cuisine.</p>
+                    <p>Cultural Club coordinator Mrs. Chantal Mukamana explained the educational value: "Cultural Day isn't just entertainment; it's an important part of our curriculum. Students research traditions, learn skills from elders, and understand the values embedded in our cultural practices."</p>
+                    <p>Highlights of the day included:</p>
+                    <ul>
+                        <li>A stunning Intore warrior dance performance by Senior 3 boys</li>
+                        <li>Traditional storytelling sessions under the "Igiti" (tree) by grandparents of students</li>
+                        <li>An exhibition of traditional agricultural tools and their modern equivalents</li>
+                        <li>A fashion show featuring adaptations of traditional dress for modern wear</li>
+                        <li>Cooking competitions with dishes like Isombe, Ubugali, and Brochettes</li>
+                    </ul>
+                    <p>The event also served as a fundraiser for the school library, with crafts and food sold to attendees. Over 500,000 RWF was raised, which will be used to purchase books by Rwandan authors and about Rwandan history and culture.</p>
+                    <p>District Mayor Marie Claire Uwimana, who attended as guest of honor, praised the school for "keeping our traditions alive while preparing students for the modern world."</p>`,
+                    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "May 12, 2023",
+                    author: "Mrs. Chantal Mukamana",
+                    views: 756,
+                    shares: 67
+                },
+                {
+                    id: 5,
+                    title: "100% Pass Rate in National Examinations",
+                    category: "Achievements",
+                    categoryClass: "achievements",
+                    excerpt: "For the third consecutive year, all Senior 6 students passed their national examinations, with 78% qualifying for university admission.",
+                    fullContent: `<p>G.S Nyamateke has achieved another educational milestone with a 100% pass rate in the 2022 National Examinations for Senior 6 students. This marks the third consecutive year of perfect results, placing our school among the top performers in the district and province.</p>
+                    <p>Even more impressive, 78% of our graduates qualified for direct university admission, with 45% achieving distinctions in sciences and mathematics. Top performer Claudine Uwimana earned the highest possible aggregate score in the sciences combination, earning her a full scholarship to the University of Rwanda College of Science and Technology.</p>
+                    <p>Academic Director Dr. Samuel Nkusi attributed the success to multiple factors: "Our holistic approach to education combines rigorous academics with strong student support systems. Teachers provide extra lessons for struggling students, we have peer tutoring programs, and we focus on examination preparation techniques."</p>
+                    <p>Key elements of our academic success strategy:</p>
+                    <ul>
+                        <li>Regular assessment and early identification of students needing support</li>
+                        <li>Smaller tutorial groups for challenging subjects</li>
+                        <li>Mental health and stress management workshops during exam periods</li>
+                        <li>Parent-teacher partnerships to support learning at home</li>
+                        <li>Investment in laboratory equipment and learning materials</li>
+                    </ul>
+                    <p>The results have attracted attention from educational authorities, with our school now serving as a model for effective teaching practices in rural secondary schools. Several teachers will be presenting their methodologies at the National Teachers Conference next month.</p>
+                    <p>A celebration ceremony for the graduating class and their teachers will be held next week, where students will receive their certificates and awards for exceptional performance. The school board has announced special bonuses for teaching staff in recognition of their dedication.</p>`,
+                    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "May 8, 2023",
+                    author: "Dr. Samuel Nkusi",
+                    views: 1342,
+                    shares: 123
+                },
+                {
+                    id: 6,
+                    title: "New Solar Panels Reduce Electricity Costs by 60%",
+                    category: "Announcements",
+                    categoryClass: "announcements",
+                    excerpt: "Our newly installed solar power system is now operational, significantly reducing our electricity bills and environmental impact.",
+                    fullContent: `<p>G.S Nyamateke has taken a major step toward sustainability with the completion of our solar power installation project. The 50kW system, funded through a green schools initiative grant, now supplies 80% of the school's electricity needs and has already reduced our power bills by 60%.</p>
+                    <p>The system consists of 200 solar panels installed on classroom rooftops and a battery storage system that ensures power availability during cloudy periods and evenings. The project was implemented in partnership with Rwanda Energy Group and involved students in the planning and monitoring process as part of their environmental studies.</p>
+                    <p>Headmaster Jean-Paul Ndayisaba highlighted the dual benefits: "This is both an economic and educational victory. We save money that can be redirected to learning materials, while students gain hands-on experience with renewable energy technology."</p>
+                    <p>Project details and benefits:</p>
+                    <ul>
+                        <li>Total capacity: 50kW, with potential to expand to 75kW</li>
+                        <li>Annual savings: Approximately 3.5 million RWF on electricity bills</li>
+                        <li>Carbon reduction: Estimated 40 tons of CO2 annually</li>
+                        <li>Educational component: Real-time monitoring display in the science lab</li>
+                        <li>Backup power: Reliable electricity for evening study sessions</li>
+                    </ul>
+                    <p>The solar installation is just one part of our broader environmental program, which includes rainwater harvesting, waste recycling, and tree planting. Our environmental club has grown to 85 members and is leading initiatives to make G.S Nyamateke a zero-waste school within three years.</p>
+                    <p>Next month, we will host a workshop for other schools in the district to share our experience with solar power implementation. The Rwanda Environment Management Authority has recognized our efforts with a Green School Award, to be presented at a ceremony in June.</p>`,
+                    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "May 3, 2023",
+                    author: "Headmaster Jean-Paul Ndayisaba",
+                    views: 689,
+                    shares: 56
+                },
+                {
+                    id: 7,
+                    title: "School Choir Wins Gold at National Music Festival",
+                    category: "Achievements",
+                    categoryClass: "achievements",
+                    excerpt: "Our school choir received the highest honors at the National Schools Music Festival, impressing judges with traditional Rwandan harmonies.",
+                    fullContent: `<p>The G.S Nyamateke School Choir has brought glory to our school by winning gold at the National Schools Music Festival held in Huye last weekend. The 40-member choir competed against 65 other schools from across Rwanda, ultimately receiving the highest score in the traditional music category.</p>
+                    <p>Under the direction of music teacher Mrs. Grace Uwambajimana, the choir performed a medley of traditional Rwandan songs arranged for four-part harmony. Their performance of "Rwanda Nziza" (Beautiful Rwanda) was particularly praised by judges for its emotional depth and technical precision.</p>
+                    <p>Mrs. Uwambajimana shared the choir's preparation process: "We've been rehearsing three times a week since January. Many of these students had never read music before joining the choir. Their dedication to learning both Western notation and preserving traditional oral transmission methods has been remarkable."</p>
+                    <p>The choir's winning repertoire included:</p>
+                    <ul>
+                        <li>"Rwanda Nziza" - The national anthem in a special choral arrangement</li>
+                        <li>"Inyamibwa" - A traditional harvest song from the Northern Province</li>
+                        <li>"Umunezero" - A celebration song typically performed at weddings</li>
+                        <li>"Indirimbo yo Kwibohora" - A liberation song composed by students</li>
+                    </ul>
+                    <p>As national champions, the choir has been invited to perform at the National Liberation Day celebrations on July 4 and will represent Rwanda at the East African Cultural Festival in Tanzania later this year. The school is seeking sponsors to support their travel and costume expenses.</p>
+                    <p>The victory has sparked increased interest in the school's music program, with enrollment in music classes doubling for the next term. The choir will perform for the school community during assembly next Monday, and plans are underway to record their winning performance for distribution to parents and alumni.</p>`,
+                    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "April 28, 2023",
+                    author: "Mrs. Grace Uwambajimana",
+                    views: 923,
+                    shares: 78
+                },
+                {
+                    id: 8,
+                    title: "Parent-Teacher Association Donates New Library Books",
+                    category: "Announcements",
+                    categoryClass: "announcements",
+                    excerpt: "The PTA has donated over 500 new books to the school library, including Rwandan literature and STEM resources.",
+                    fullContent: `<p>The G.S Nyamateke Parent-Teacher Association (PTA) has significantly enriched our school's learning resources with a donation of 527 new books to the library. The donation, valued at approximately 2.5 million RWF, includes works by Rwandan authors, STEM textbooks, reference materials, and literature in Kinyarwanda, English, and French.</p>
+                    <p>The handover ceremony took place last Thursday, with PTA Chairperson Mr. Charles Mugabo emphasizing the importance of reading: "We believe that a well-stocked library is fundamental to academic excellence. These books will expose our children to new ideas, support their studies, and foster a lifelong love of reading."</p>
+                    <p>Librarian Miss Anita Mutoni expressed her excitement about the new additions: "We've particularly strengthened our collection of books by African authors and about African history and science. For too long, our students have only read about other continents. Now they can see themselves reflected in the literature they study."</p>
+                    <p>The donation includes:</p>
+                    <ul>
+                        <li>215 STEM textbooks and reference books</li>
+                        <li>142 works by Rwandan and East African authors</li>
+                        <li>85 French language learning resources</li>
+                        <li>50 career guidance and university preparation books</li>
+                        <li>35 books in Kinyarwanda for younger readers</li>
+                    </ul>
+                    <p>The PTA raised funds through various activities including a harambee dinner, parent contributions, and support from local businesses. This is their largest single donation to the school since the association was formed five years ago.</p>
+                    <p>To celebrate the new books, the library is hosting a "Reading Week" with special activities including author visits (including Rwandan author Scholastique Mukasonga), reading competitions, and book review contests. The PTA has also committed to an annual book donation drive to ensure the library collection continues to grow and remain current.</p>`,
+                    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                    date: "April 25, 2023",
+                    author: "Mr. Charles Mugabo",
+                    views: 634,
+                    shares: 34
+                }
+            ],
+            events: [
+                {
+                    id: 1,
+                    title: "Career Guidance Day for Senior 4 & 5",
+                    months: ["September", "April", "June"],
+                    time: "9:00 AM - 3:00 PM",
+                    location: "School Assembly Hall",
+                    description: "Professionals from various fields will discuss career opportunities and educational pathways. Students must register in advance.",
+                    attendees: 87,
+                    maxAttendees: 120,
+                    category: "academic"
+                },
+                {
+                    id: 2,
+                    title: "Parents' General Meeting",
+                    months: ["September", "April", "June"],
+                    time: "2:00 PM - 5:00 PM",
+                    location: "School Grounds",
+                    description: "Quarterly meeting for all parents to discuss school development, academic performance, and upcoming activities.",
+                    attendees: 156,
+                    maxAttendees: 300,
+                    category: "academic"
+                },
+                {
+                    id: 3,
+                    title: "Inter-house Sports Competition",
+                    months: ["April", "June"],
+                    time: "8:00 AM - 5:00 PM",
+                    location: "School Sports Field",
+                    description: "Annual sports day featuring athletics, football, volleyball, and traditional games competitions between school houses.",
+                    attendees: 245,
+                    maxAttendees: 400,
+                    category: "sports"
+                },
+                {
+                    id: 4,
+                    title: "Science Fair Exhibition",
+                    months: ["April", "June"],
+                    time: "10:00 AM - 4:00 PM",
+                    location: "Science Laboratories",
+                    description: "Students showcase their science projects. Open to parents, primary schools, and community members.",
+                    attendees: 63,
+                    maxAttendees: 100,
+                    category: "academic"
+                },
+                {
+                    id: 5,
+                    title: "End of Term Examinations",
+                    months: ["Termly"],
+                    time: "8:00 AM - 12:00 PM",
+                    location: "Classrooms",
+                    description: "Second term examinations for all classes. Special schedule applies.",
+                    attendees: 420,
+                    maxAttendees: 420,
+                    category: "academic"
+                },
+                {
+                    id: 6,
+                    title: "School Open Day",
+                    months: ["End of Term"],
+                    time: "9:00 AM - 2:00 PM",
+                    location: "Entire School Campus",
+                    description: "Prospective students and parents invited to tour facilities, meet teachers, and learn about academic programs.",
+                    attendees: 0,
+                    maxAttendees: 200,
+                    category: "events"
+                }
+            ]
+        };
+
+        // App State with Local Storage Integration
+        const appState = {
+            currentFilter: localStorage.getItem('newsFilter') || 'all',
+            subscribed: localStorage.getItem('subscribed') === 'true',
+            userLoggedIn: localStorage.getItem('userLoggedIn') !== 'false', // Default to true
+            calendarDownloaded: localStorage.getItem('calendarDownloaded') === 'true',
+            userEvents: JSON.parse(localStorage.getItem('userEvents')) || [],
+            newsletterSubscribed: localStorage.getItem('newsletterSubscribed') === 'true',
+            viewedArticles: JSON.parse(localStorage.getItem('viewedArticles')) || [],
+            notificationCount: parseInt(localStorage.getItem('notificationCount')) || 3,
+            currentPage: 1,
+            articlesPerPage: 4
+        };
+
+        // Admin state
+        let isAdminLoggedIn = false;
+
+        // DOM Elements
+        const searchInput = document.getElementById('search-input');
+        const searchBtn = document.getElementById('search-btn');
+        const searchResults = document.getElementById('search-results');
+        const userMenu = document.getElementById('user-menu');
+        const userName = document.getElementById('user-name');
+        const userDropdown = document.getElementById('user-dropdown');
+        const notificationCount = document.getElementById('notification-count');
+        const logoutBtn = document.getElementById('logout-btn');
+        const calendarDownload = document.getElementById('calendar-download');
+        const calendarText = document.getElementById('calendar-text');
+        const subscribeBtn = document.getElementById('subscribe-btn');
+        const subscribeText = document.getElementById('subscribe-text');
+        const viewCalendarBtn = document.getElementById('view-calendar-btn');
+        const syncCalendarBtn = document.getElementById('sync-calendar-btn');
+        const featuredArticle = document.getElementById('featured-article');
+        const featuredLoading = document.getElementById('featured-loading');
+        const filterControls = document.getElementById('filter-controls');
+        const newsGrid = document.getElementById('news-grid');
+        const newsLoading = document.getElementById('news-loading');
+        const loadMoreNewsBtn = document.getElementById('load-more-news');
+        const eventsList = document.getElementById('events-list');
+        const eventsLoading = document.getElementById('events-loading');
+        const articleModal = document.getElementById('article-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDate = document.getElementById('modal-date');
+        const modalAuthor = document.getElementById('modal-author');
+        const modalImage = document.getElementById('modal-image');
+        const modalBody = document.getElementById('modal-body');
+        const shareArticleBtn = document.getElementById('share-article-btn');
+        const notification = document.getElementById('notification');
+        const notificationIcon = document.getElementById('notification-icon');
+        const notificationMessage = document.getElementById('notification-message');
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterSubscribe = document.getElementById('newsletter-subscribe');
+        const newsletterStatus = document.getElementById('newsletter-status');
+        const currentYear = document.getElementById('current-year');
+        const statsContainer = document.getElementById('stats-container');
+        
+        // Admin DOM Elements
+        const adminBtn = document.getElementById('adminBtn');
+        const adminModal = document.getElementById('adminModal');
+        const closeAdminModal = document.getElementById('closeAdminModal');
+        const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+        const adminCode = document.getElementById('adminCode');
+        const adminPanel = document.getElementById('adminPanel');
+        const addArticleBtn = document.getElementById('addArticleBtn');
+        const manageArticlesBtn = document.getElementById('manageArticlesBtn');
+        const logoutAdminBtn = document.getElementById('logoutAdminBtn');
+        const addArticleForm = document.getElementById('addArticleForm');
+        const manageArticles = document.getElementById('manageArticles');
+        const articleForm = document.getElementById('articleForm');
+        const cancelAddArticle = document.getElementById('cancelAddArticle');
+        const articlesList = document.getElementById('articlesList');
+        
+        // Footer links
+        const footerLinks = [
+            'footer-calendar', 'footer-directory', 'footer-portal', 'footer-student', 'footer-menu',
+            'footer-departments', 'footer-library', 'footer-college', 'footer-athletics', 'footer-policies',
+            'privacy-link', 'terms-link'
+        ].map(id => document.getElementById(id));
+
+        // Initialize the page
+        async function init() {
+            // Load articles from server first
+            await loadArticlesFromServer();
+            
+            // Set current year in footer
+            currentYear.textContent = new Date().getFullYear();
+            
+            // Update UI based on stored state
+            updateUIFromState();
+            
+            // Load content with simulated loading
+            simulateLoading();
+            
+            // Load events display
+            loadEventsDisplay();
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Show welcome notification if first visit today
+            if (!localStorage.getItem('lastVisit') || localStorage.getItem('lastVisit') !== new Date().toDateString()) {
+                setTimeout(() => {
+                    showNotification(`Welcome to G.S Nyamateke News Portal! ${getGreeting()}`, 'info');
+                    localStorage.setItem('lastVisit', new Date().toDateString());
+                }, 1000);
+            }
+        }
+
+        // Load articles from server
+        async function loadArticlesFromServer() {
+            try {
+                const response = await fetch('/api/articles');
+                const articles = await response.json();
+                // Merge with existing articles, prioritizing server data
+                newsData.articles = articles;
+            } catch (error) {
+                console.error('Error loading articles from server:', error);
+                // Fall back to localStorage if server is not available
+                const savedArticles = localStorage.getItem('schoolNewsArticles');
+                if (savedArticles) {
+                    newsData.articles = JSON.parse(savedArticles);
+                }
+            }
+        }
+
+        // Get time-based greeting
+        function getGreeting() {
+            const hour = new Date().getHours();
+            if (hour < 12) return 'Good morning!';
+            if (hour < 18) return 'Good afternoon!';
+            return 'Good evening!';
+        }
+
+        // Update UI from app state
+        function updateUIFromState() {
+            // User name
+            userName.textContent = appState.userLoggedIn ? 'Parent Portal' : 'Login';
+            
+            // Notification count
+            if (appState.notificationCount > 0) {
+                notificationCount.textContent = appState.notificationCount;
+                notificationCount.style.display = 'inline-block';
+                notificationCount.style.backgroundColor = 'var(--secondary)';
+                notificationCount.style.color = 'white';
+                notificationCount.style.borderRadius = '50%';
+                notificationCount.style.width = '20px';
+                notificationCount.style.height = '20px';
+                notificationCount.style.textAlign = 'center';
+                notificationCount.style.fontSize = '0.7rem';
+                notificationCount.style.lineHeight = '20px';
+                notificationCount.style.marginLeft = '5px';
+            } else {
+                notificationCount.style.display = 'none';
+            }
+            
+            // Subscription button
+            if (appState.subscribed) {
+                subscribeText.textContent = 'Subscribed';
+                subscribeBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed';
+                subscribeBtn.style.backgroundColor = 'var(--success)';
+                subscribeBtn.style.color = 'white';
+            }
+            
+            // Calendar download button
+            if (appState.calendarDownloaded) {
+                calendarText.textContent = 'Calendar Downloaded';
+                calendarDownload.innerHTML = '<i class="fas fa-check"></i> Calendar Downloaded';
+                calendarDownload.style.backgroundColor = 'var(--success)';
+            }
+            
+            // Newsletter status
+            if (appState.newsletterSubscribed) {
+                newsletterStatus.textContent = 'You are subscribed to our newsletter';
+                newsletterStatus.style.color = 'var(--success)';
+            }
+        }
+
+        // Simulate loading for better UX
+        function simulateLoading() {
+            // Show loading spinners
+            featuredLoading.style.display = 'block';
+            newsLoading.style.display = 'block';
+            eventsLoading.style.display = 'block';
+            
+            // Load stats first (fast)
+            setTimeout(loadStats, 300);
+            
+            // Load featured article
+            setTimeout(() => {
+                loadFeaturedArticle();
+                featuredLoading.style.display = 'none';
+            }, 500);
+            
+            // Load news articles
+            setTimeout(() => {
+                loadNewsArticles(appState.currentFilter);
+                newsLoading.style.display = 'none';
+            }, 800);
+            
+            // Load filter controls
+            setTimeout(loadFilterControls, 600);
+            
+            // Load events
+            setTimeout(() => {
+                loadEvents();
+                eventsLoading.style.display = 'none';
+            }, 1000);
+        }
+
+        // Load statistics
+        function loadStats() {
+            const totalArticles = newsData.articles.length + 1; // +1 for featured
+            const totalEvents = newsData.events.length;
+            const today = new Date();
+            const thisMonthEvents = newsData.events.filter(event => {
+                const eventDate = new Date(event.date);
+                return eventDate.getMonth() === today.getMonth() && eventDate.getFullYear() === today.getFullYear();
+            }).length;
+            
+            // Calculate total article views
+            let totalViews = newsData.featured.views;
+            newsData.articles.forEach(article => {
+                totalViews += article.views;
+            });
+            
+            statsContainer.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-number">${totalArticles}</div>
+                    <div class="stat-label">News Articles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${totalEvents}</div>
+                    <div class="stat-label">Upcoming Events</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${thisMonthEvents}</div>
+                    <div class="stat-label">Events This Month</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${totalViews.toLocaleString()}</div>
+                    <div class="stat-label">Total Article Views</div>
+                </div>
+            `;
+        }
+
+        // Load featured article with view tracking
+        function loadFeaturedArticle() {
+            const featured = newsData.featured;
+            
+            // Track view if not already viewed in this session
+            if (!appState.viewedArticles.includes(featured.id)) {
+                appState.viewedArticles.push(featured.id);
+                localStorage.setItem('viewedArticles', JSON.stringify(appState.viewedArticles));
+                featured.views++;
+            }
+            
+            featuredArticle.innerHTML = `
+                <div class="featured-image">
+                    <img src="${featured.image}" alt="${featured.title}" loading="lazy">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-category">${featured.category}</span>
+                    <h3 class="featured-title">${featured.title}</h3>
+                    <p class="featured-excerpt">${featured.excerpt}</p>
+                    <div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.9rem; color: var(--gray);">
+                        <span><i class="far fa-eye"></i> ${featured.views.toLocaleString()} views</span>
+                        <span><i class="fas fa-share"></i> ${featured.shares} shares</span>
+                    </div>
+                    <button class="btn btn-primary read-more-btn" data-id="${featured.id}">
+                        Read Full Story <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        // Load news articles with pagination
+        function loadNewsArticles(filter = 'all', page = 1) {
+            newsGrid.innerHTML = '';
+            
+            let articlesToShow = [...newsData.articles];
+            
+            if (filter !== 'all') {
+                articlesToShow = articlesToShow.filter(article => 
+                    article.category.toLowerCase() === filter.toLowerCase()
+                );
+            }
+            
+            // Calculate pagination
+            const startIndex = (page - 1) * appState.articlesPerPage;
+            const endIndex = startIndex + appState.articlesPerPage;
+            const paginatedArticles = articlesToShow.slice(startIndex, endIndex);
+            
+            if (paginatedArticles.length === 0) {
+                newsGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);"><i class="fas fa-newspaper fa-3x" style="margin-bottom: 15px;"></i><h3>No articles found</h3><p>Try a different filter or check back later for new content.</p></div>';
+                loadMoreNewsBtn.style.display = 'none';
+                return;
+            }
+            
+            paginatedArticles.forEach(article => {
+                // Track view if not already viewed in this session
+                if (!appState.viewedArticles.includes(article.id)) {
+                    appState.viewedArticles.push(article.id);
+                    localStorage.setItem('viewedArticles', JSON.stringify(appState.viewedArticles));
+                    article.views++;
+                }
+                
+                const newsCard = document.createElement('article');
+                newsCard.className = 'news-card';
+                newsCard.innerHTML = `
+                    <div class="news-image">
+                        <img src="${article.image}" alt="${article.title}" loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category ${article.categoryClass}">${article.category}</span>
+                        <h3 class="news-title">${article.title}</h3>
+                        <p class="news-excerpt">${article.excerpt}</p>
+                        <div style="display: flex; justify-content: space-between; margin-top: auto;">
+                            <div class="news-meta">
+                                <div class="news-date">
+                                    <i class="far fa-calendar"></i> ${article.date}
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <span style="font-size: 0.8rem; color: var(--gray);">
+                                    <i class="far fa-eye"></i> ${article.views.toLocaleString()}
+                                </span>
+                                <a href="#" class="news-read-more read-more-btn" data-id="${article.id}">
+                                    Read More <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                newsGrid.appendChild(newsCard);
+            });
+            
+            // Show/hide load more button
+            const totalFilteredArticles = filter === 'all' ? newsData.articles.length : 
+                newsData.articles.filter(a => a.category.toLowerCase() === filter.toLowerCase()).length;
+            const hasMoreArticles = totalFilteredArticles > (page * appState.articlesPerPage);
+            
+            loadMoreNewsBtn.style.display = hasMoreArticles ? 'inline-block' : 'none';
+            loadMoreNewsBtn.onclick = () => {
+                appState.currentPage++;
+                loadNewsArticles(filter, appState.currentPage);
+                showNotification(`Loaded page ${appState.currentPage} of news`, 'info');
+            };
+            
+            // Add event listeners to new "Read More" buttons
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const articleId = parseInt(this.getAttribute('data-id'));
+                    openArticleModal(articleId);
+                });
+            });
+        }
+
+        // Load filter controls
+        function loadFilterControls() {
+            const categories = ['All', 'Academics', 'Sports', 'Events', 'Achievements', 'Announcements'];
+            
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = `filter-btn ${category.toLowerCase() === appState.currentFilter ? 'active' : ''}`;
+                button.textContent = category;
+                button.setAttribute('data-filter', category.toLowerCase());
+                
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Filter articles
+                    appState.currentFilter = filter;
+                    appState.currentPage = 1;
+                    localStorage.setItem('newsFilter', filter);
+                    loadNewsArticles(filter);
+                    
+                    // Show notification
+                    if (filter === 'all') {
+                        showNotification('Showing all news articles', 'info');
+                    } else {
+                        showNotification(`Filtering by: ${category}`, 'info');
+                    }
+                });
+                
+                filterControls.appendChild(button);
+            });
+        }
+
+        // Load events with registration tracking
+        function loadEvents() {
+            eventsList.innerHTML = '';
+            
+            // Sort events by their first month (for display purposes)
+            const sortedEvents = [...newsData.events].sort((a, b) => {
+                const monthOrder = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Termly", "End of Term"];
+                const aFirstMonth = Array.isArray(a.months) ? a.months[0] : a.months;
+                const bFirstMonth = Array.isArray(b.months) ? b.months[0] : b.months;
+                return monthOrder.indexOf(aFirstMonth) - monthOrder.indexOf(bFirstMonth);
+            });
+            
+            sortedEvents.forEach(event => {
+                const monthsText = Array.isArray(event.months) ? event.months.join(", ") : event.months;
+                
+                // Check if user is registered for this event
+                const isRegistered = appState.userEvents.includes(event.id);
+                const isFull = event.attendees >= event.maxAttendees;
+                
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.innerHTML = `
+                    <div class="event-date">
+                        <div class="months">${monthsText}</div>
+                        <div class="category">${event.category || 'events'}</div>
+                    </div>
+                    <h3 class="event-title">${event.title}</h3>
+                    <p class="event-details">
+                        <i class="fas fa-clock"></i> ${event.time} | 
+                        <i class="fas fa-map-marker-alt"></i> ${event.location}
+                    </p>
+                    <p>${event.description}</p>
+                    <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.9rem; color: ${isFull ? 'var(--secondary)' : 'var(--gray)'};">
+                            <i class="fas fa-users"></i> ${event.attendees}/${event.maxAttendees} attending
+                        </div>
+                        <a href="#" class="event-cta ${isRegistered ? 'registered' : ''} ${isFull && !isRegistered ? 'full' : ''}" 
+                           data-id="${event.id}" id="event-btn-${event.id}">
+                            ${isRegistered ? '<i class="fas fa-check"></i> Registered' : 
+                              isFull ? '<i class="fas fa-times"></i> Full' : 
+                              '<i class="fas fa-calendar-plus"></i> Register'}
+                        </a>
+                    </div>
+                `;
+                eventsList.appendChild(eventCard);
+                
+                // Style registered/full events
+                const eventBtn = document.getElementById(`event-btn-${event.id}`);
+                if (isRegistered) {
+                    eventBtn.style.backgroundColor = 'var(--success)';
+                    eventBtn.style.color = 'white';
+                } else if (isFull) {
+                    eventBtn.style.backgroundColor = 'var(--light-gray)';
+                    eventBtn.style.color = 'var(--gray)';
+                    eventBtn.style.cursor = 'not-allowed';
+                }
+            });
+            
+            // Add event listeners to registration buttons
+            document.querySelectorAll('.event-cta').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const eventId = parseInt(this.getAttribute('data-id'));
+                    const event = newsData.events.find(e => e.id === eventId);
+                    
+                    if (this.classList.contains('full')) {
+                        showNotification('This event is already full', 'warning');
+                        return;
+                    }
+                    
+                    if (this.classList.contains('registered')) {
+                        unregisterFromEvent(eventId);
+                    } else {
+                        registerForEvent(eventId);
+                    }
+                });
+            });
+        }
+
+        // Open article modal with enhanced features
+        function openArticleModal(articleId) {
+            let article;
+            
+            if (articleId === newsData.featured.id) {
+                article = newsData.featured;
+            } else {
+                article = newsData.articles.find(a => a.id === articleId);
+            }
+            
+            if (!article) return;
+            
+            // Increment views
+            article.views++;
+            
+            modalTitle.textContent = article.title;
+            modalCategory.textContent = article.category;
+            modalCategory.className = `modal-category ${article.categoryClass}`;
+            modalDate.textContent = article.date;
+            modalAuthor.textContent = article.author;
+            modalImage.src = article.image;
+            modalImage.alt = article.title;
+            modalBody.innerHTML = article.fullContent;
+            
+            // Add video if available
+            if (article.video) {
+                modalImage.insertAdjacentHTML('afterend', `<div class="modal-video" style="margin: 20px 0;"><iframe width="100%" height="315" src="${article.video}" frameborder="0" allowfullscreen></iframe></div>`);
+            } else {
+                // Remove video if it exists from previous modal
+                const existingVideo = modalImage.parentNode.querySelector('.modal-video');
+                if (existingVideo) existingVideo.remove();
+            }
+            
+            // Set up share button
+            shareArticleBtn.onclick = () => shareArticle(article);
+            
+            articleModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Update view count in the UI if article is in the grid
+            const viewCountElement = document.querySelector(`.read-more-btn[data-id="${articleId}"]`)?.closest('.news-card')?.querySelector('.fa-eye')?.closest('span');
+            if (viewCountElement) {
+                const currentText = viewCountElement.textContent;
+                const currentViews = parseInt(currentText.match(/\d+/)[0]) || 0;
+                viewCountElement.innerHTML = `<i class="far fa-eye"></i> ${(currentViews + 1).toLocaleString()}`;
+            }
+        }
+
+        // Close article modal
+        function closeArticleModal() {
+            articleModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Enhanced search functionality
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            if (searchTerm === '') {
+                searchResults.classList.remove('active');
+                showNotification('Please enter a search term', 'warning');
+                return;
+            }
+            
+            // Clear previous results
+            searchResults.innerHTML = '<div class="search-result-item" style="font-weight: 600; color: var(--primary);">Search Results</div>';
+            
+            // Search through all articles (including featured)
+            const allArticles = [newsData.featured, ...newsData.articles];
+            const matchingArticles = allArticles.filter(article => 
+                article.title.toLowerCase().includes(searchTerm) ||
+                article.excerpt.toLowerCase().includes(searchTerm) ||
+                article.category.toLowerCase().includes(searchTerm) ||
+                article.author.toLowerCase().includes(searchTerm)
+            );
+            
+            // Search through events
+            const matchingEvents = newsData.events.filter(event => 
+                event.title.toLowerCase().includes(searchTerm) ||
+                event.description.toLowerCase().includes(searchTerm) ||
+                event.location.toLowerCase().includes(searchTerm)
+            );
+            
+            if (matchingArticles.length === 0 && matchingEvents.length === 0) {
+                searchResults.innerHTML += '<div class="search-result-item">No results found for "' + searchTerm + '"</div>';
+            } else {
+                // Add article results
+                if (matchingArticles.length > 0) {
+                    searchResults.innerHTML += '<div class="search-result-item" style="font-weight: 600; color: var(--gray); margin-top: 10px; background: none;">Articles</div>';
+                    matchingArticles.forEach(article => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <div class="search-result-title">${article.title}</div>
+                            <div class="search-result-category ${article.categoryClass}">${article.category}</div>
+                            <div style="font-size: 0.8rem; color: var(--gray); margin-top: 3px;">${article.date}</div>
+                        `;
+                        
+                        resultItem.addEventListener('click', function() {
+                            openArticleModal(article.id);
+                            searchResults.classList.remove('active');
+                            searchInput.value = '';
+                        });
+                        
+                        searchResults.appendChild(resultItem);
+                    });
+                }
+                
+                // Add event results
+                if (matchingEvents.length > 0) {
+                    searchResults.innerHTML += '<div class="search-result-item" style="font-weight: 600; color: var(--gray); margin-top: 10px; background: none;">Events</div>';
+                    matchingEvents.forEach(event => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <div class="search-result-title">${event.title}</div>
+                            <div class="search-result-category" style="background-color: rgba(245, 158, 11, 0.1); color: var(--accent);">Event</div>
+                            <div style="font-size: 0.8rem; color: var(--gray); margin-top: 3px;">${new Date(event.date).toLocaleDateString()} • ${event.location}</div>
+                        `;
+                        
+                        resultItem.addEventListener('click', function() {
+                            // Scroll to events section
+                            document.querySelector('.events-section').scrollIntoView({ behavior: 'smooth' });
+                            searchResults.classList.remove('active');
+                            searchInput.value = '';
+                            showNotification(`Showing event: ${event.title}`, 'info');
+                        });
+                        
+                        searchResults.appendChild(resultItem);
+                    });
+                }
+            }
+            
+            searchResults.classList.add('active');
+        }
+
+        // Register for event
+        function registerForEvent(eventId) {
+            const event = newsData.events.find(e => e.id === eventId);
+            
+            if (!event) return;
+            
+            if (event.attendees >= event.maxAttendees) {
+                showNotification('This event is already full', 'warning');
+                return;
+            }
+            
+            if (appState.userEvents.includes(eventId)) {
+                showNotification('You are already registered for this event', 'info');
+                return;
+            }
+            
+            // Simulate registration process
+            event.attendees++;
+            appState.userEvents.push(eventId);
+            localStorage.setItem('userEvents', JSON.stringify(appState.userEvents));
+            
+            // Update button
+            const eventBtn = document.getElementById(`event-btn-${eventId}`);
+            eventBtn.innerHTML = '<i class="fas fa-check"></i> Registered';
+            eventBtn.style.backgroundColor = 'var(--success)';
+            eventBtn.style.color = 'white';
+            eventBtn.classList.add('registered');
+            
+            // Update attendees count
+            const attendeesElement = eventBtn.closest('.event-card').querySelector('.fa-users').closest('div');
+            attendeesElement.innerHTML = `<i class="fas fa-users"></i> ${event.attendees}/${event.maxAttendees} attending`;
+            
+            showNotification(`Successfully registered for "${event.title}"`, 'success');
+            
+            // Add notification
+            appState.notificationCount++;
+            localStorage.setItem('notificationCount', appState.notificationCount);
+            updateUIFromState();
+        }
+
+        // Unregister from event
+        function unregisterFromEvent(eventId) {
+            const event = newsData.events.find(e => e.id === eventId);
+            
+            if (!event) return;
+            
+            // Simulate unregistration
+            event.attendees = Math.max(0, event.attendees - 1);
+            appState.userEvents = appState.userEvents.filter(id => id !== eventId);
+            localStorage.setItem('userEvents', JSON.stringify(appState.userEvents));
+            
+            // Update button
+            const eventBtn = document.getElementById(`event-btn-${eventId}`);
+            eventBtn.innerHTML = '<i class="fas fa-calendar-plus"></i> Register';
+            eventBtn.style.backgroundColor = '';
+            eventBtn.style.color = '';
+            eventBtn.classList.remove('registered');
+            
+            // Update attendees count
+            const attendeesElement = eventBtn.closest('.event-card').querySelector('.fa-users').closest('div');
+            attendeesElement.innerHTML = `<i class="fas fa-users"></i> ${event.attendees}/${event.maxAttendees} attending`;
+            
+            showNotification(`Unregistered from "${event.title}"`, 'info');
+        }
+
+        // Share article
+        function shareArticle(article) {
+            const shareUrl = window.location.href.split('?')[0] + `?article=${article.id}`;
+            const shareText = `Check out this article from G.S Nyamateke: ${article.title}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: article.title,
+                    text: shareText,
+                    url: shareUrl
+                }).then(() => {
+                    article.shares++;
+                    showNotification('Article shared successfully!', 'success');
+                }).catch(err => {
+                    console.log('Error sharing:', err);
+                    fallbackShare(article, shareUrl, shareText);
+                });
+            } else {
+                fallbackShare(article, shareUrl, shareText);
+            }
+        }
+
+        // Fallback share method
+        function fallbackShare(article, shareUrl, shareText) {
+            // Copy to clipboard
+            navigator.clipboard.writeText(`${shareText}\n${shareUrl}`).then(() => {
+                article.shares++;
+                showNotification('Link copied to clipboard! Share it with others.', 'success');
+            }).catch(err => {
+                console.log('Error copying to clipboard:', err);
+                showNotification('Please manually copy the URL to share', 'info');
+            });
+        }
+
+        // Show notification with enhanced styling
+        function showNotification(message, type = 'info') {
+            notificationMessage.textContent = message;
+            
+            // Set icon and color based on type
+            let iconClass = 'fas fa-info-circle';
+            if (type === 'success') {
+                iconClass = 'fas fa-check-circle';
+                notification.className = 'notification active';
+            } else if (type === 'warning') {
+                iconClass = 'fas fa-exclamation-triangle';
+                notification.className = 'notification warning active';
+            } else if (type === 'error') {
+                iconClass = 'fas fa-times-circle';
+                notification.className = 'notification error active';
+            } else {
+                notification.className = 'notification info active';
+            }
+            
+            notificationIcon.className = iconClass;
+            
+            // Auto-hide after appropriate time
+            const hideTime = type === 'error' ? 5000 : type === 'warning' ? 4000 : 3000;
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, hideTime);
+        }
+
+        // Toggle user dropdown
+        function toggleUserDropdown() {
+            userDropdown.classList.toggle('active');
+            
+            // Close other dropdowns
+            searchResults.classList.remove('active');
+            
+            // Close dropdown when clicking outside
+            if (userDropdown.classList.contains('active')) {
+                setTimeout(() => {
+                    document.addEventListener('click', closeUserDropdownOnClickOutside);
+                }, 10);
+            } else {
+                document.removeEventListener('click', closeUserDropdownOnClickOutside);
+            }
+        }
+
+        // Close user dropdown when clicking outside
+        function closeUserDropdownOnClickOutside(e) {
+            if (!userMenu.contains(e.target) && !userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('active');
+                document.removeEventListener('click', closeUserDropdownOnClickOutside);
+            }
+        }
+
+        // Handle user logout/login
+        function handleLogout() {
+            if (appState.userLoggedIn) {
+                appState.userLoggedIn = false;
+                localStorage.setItem('userLoggedIn', 'false');
+                showNotification('You have been logged out successfully', 'success');
+                userName.textContent = 'Login';
+            } else {
+                // Simulate login
+                appState.userLoggedIn = true;
+                localStorage.setItem('userLoggedIn', 'true');
+                showNotification('Welcome back to G.S Nyamateke Portal!', 'success');
+                userName.textContent = 'Parent Portal';
+                
+                // Reset notification count
+                appState.notificationCount = 0;
+                localStorage.setItem('notificationCount', 0);
+                updateUIFromState();
+            }
+            
+            userDropdown.classList.remove('active');
+        }
+
+        // Handle calendar download/sync
+        function handleCalendarDownload(e) {
+            e.preventDefault();
+            
+            if (!appState.calendarDownloaded) {
+                // Simulate download with progress
+                showNotification('Downloading school calendar...', 'info');
+                
+                setTimeout(() => {
+                    appState.calendarDownloaded = true;
+                    localStorage.setItem('calendarDownloaded', 'true');
+                    calendarText.textContent = 'Calendar Downloaded';
+                    calendarDownload.innerHTML = '<i class="fas fa-check"></i> Calendar Downloaded';
+                    calendarDownload.style.backgroundColor = 'var(--success)';
+                    showNotification('School calendar downloaded successfully!', 'success');
+                }, 1500);
+            } else {
+                showNotification('Calendar already downloaded. Check your downloads folder.', 'info');
+            }
+        }
+
+        // Handle calendar sync
+        function handleCalendarSync() {
+            showNotification('Syncing your calendar with school events...', 'info');
+            
+            // Simulate sync process
+            setTimeout(() => {
+                const eventsToSync = newsData.events.filter(event => appState.userEvents.includes(event.id));
+                if (eventsToSync.length > 0) {
+                    showNotification(`Synced ${eventsToSync.length} events to your calendar`, 'success');
+                } else {
+                    showNotification('No events to sync. Register for events first.', 'info');
+                }
+            }, 2000);
+        }
+
+        // Handle subscription
+        function handleSubscribe() {
+            if (!appState.subscribed) {
+                // Show confirmation
+                if (confirm('Subscribe to receive notifications about school news and events?')) {
+                    appState.subscribed = true;
+                    localStorage.setItem('subscribed', 'true');
+                    subscribeText.textContent = 'Subscribed';
+                    subscribeBtn.innerHTML = '<i class="fas fa-check"></i> Subscribed';
+                    subscribeBtn.style.backgroundColor = 'var(--success)';
+                    subscribeBtn.style.color = 'white';
+                    showNotification('You have subscribed to school updates!', 'success');
+                }
+            } else {
+                if (confirm('Unsubscribe from school updates?')) {
+                    appState.subscribed = false;
+                    localStorage.setItem('subscribed', 'false');
+                    subscribeText.textContent = 'Subscribe to Updates';
+                    subscribeBtn.innerHTML = '<i class="fas fa-bell"></i> Subscribe to Updates';
+                    subscribeBtn.style.backgroundColor = '';
+                    subscribeBtn.style.color = '';
+                    showNotification('You have unsubscribed from updates', 'info');
+                }
+            }
+        }
+
+        // Handle newsletter subscription
+        function handleNewsletterSubscribe() {
+            const email = newsletterEmail.value.trim();
+            
+            if (!email) {
+                showNotification('Please enter your email address', 'warning');
+                newsletterEmail.focus();
+                return;
+            }
+            
+            if (!isValidEmail(email)) {
+                showNotification('Please enter a valid email address', 'warning');
+                newsletterEmail.focus();
+                return;
+            }
+            
+            showNotification('Subscribing to newsletter...', 'info');
+
+            fetch('http://localhost:3000/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+            .then(response => {
+                if (response.ok) {
+                    appState.newsletterSubscribed = true;
+                    localStorage.setItem('newsletterSubscribed', 'true');
+                    newsletterStatus.textContent = `Subscribed with: ${email}`;
+                    newsletterStatus.style.color = 'var(--success)';
+                    newsletterEmail.value = '';
+                    showNotification(`Thank you! You've subscribed to our newsletter.`, 'success');
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Subscription failed.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Newsletter subscription error:', error);
+                showNotification('Subscription failed. Please try again later.', 'error');
+            });
+        }
+
+        // Validate email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Load Admin Articles for Management
+        async function loadAdminArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                const articles = await response.json();
+                
+                articlesList.innerHTML = '';
+                
+                articles.forEach(article => {
+                    const articleItem = document.createElement('div');
+                    articleItem.style.cssText = 'border: 1px solid var(--light-gray); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;';
+                    articleItem.innerHTML = `
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary);">${article.title}</h4>
+                        <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 0.5rem;">${article.category} | ${article.date} | ${article.views} views</p>
+                        <p style="margin-bottom: 1rem;">${article.content.substring(0, 100)}...</p>
+                        <button class="btn btn-outline" onclick="deleteArticle(${article.id})" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Delete</button>
+                    `;
+                    articlesList.appendChild(articleItem);
+                });
+            } catch (error) {
+                console.error('Error loading articles:', error);
+                showNotification('Failed to load articles', 'error');
+            }
+        }
+
+        // Delete Article Function
+        async function deleteArticle(articleId) {
+            if (confirm('Are you sure you want to delete this article?')) {
+                try {
+                    const response = await fetch(`/api/articles/${articleId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (response.ok) {
+                        // Remove from local newsData
+                        newsData.articles = newsData.articles.filter(article => article.id !== articleId);
+                        
+                        // Re-render news
+                        loadNewsArticles();
+                        loadAdminArticles();
+                        
+                        showNotification('Article deleted successfully', 'info');
+                    } else {
+                        showNotification(result.error || 'Failed to delete article', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error deleting article:', error);
+                    showNotification('Failed to delete article', 'error');
+                }
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Close search results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchBtn.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.remove('active');
+                }
+            });
+            
+            // User dropdown
+            userMenu.addEventListener('click', toggleUserDropdown);
+            
+            // Logout/Login
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                handleLogout();
+            });
+            
+            // Calendar download
+            calendarDownload.addEventListener('click', handleCalendarDownload);
+            
+            // Calendar sync
+            syncCalendarBtn.addEventListener('click', handleCalendarSync);
+            
+            // Subscribe button
+            subscribeBtn.addEventListener('click', handleSubscribe);
+            
+            // View calendar button
+            viewCalendarBtn.addEventListener('click', function() {
+                // Scroll to events section
+                document.querySelector('.events-section').scrollIntoView({ behavior: 'smooth' });
+                showNotification('Viewing upcoming events', 'info');
+            });
+            
+            // Modal close
+            modalClose.addEventListener('click', closeArticleModal);
+            
+            // Close modal when clicking outside
+            articleModal.addEventListener('click', function(e) {
+                if (e.target === articleModal) {
+                    closeArticleModal();
+                }
+            });
+            
+            // Newsletter subscription
+            newsletterSubscribe.addEventListener('click', handleNewsletterSubscribe);
+            newsletterEmail.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleNewsletterSubscribe();
+                }
+            });
+            
+            // Admin Panel Event Listeners
+            adminBtn.addEventListener('click', () => {
+                adminModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeAdminModal.addEventListener('click', () => {
+                adminModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                adminCode.value = '';
+                if (!isAdminLoggedIn) {
+                    document.getElementById('accessCodeForm').style.display = 'block';
+                    adminPanel.style.display = 'none';
+                }
+            });
+
+            // Verify Admin Code
+            verifyCodeBtn.addEventListener('click', () => {
+                if (adminCode.value === '551203') {
+                    isAdminLoggedIn = true;
+                    document.getElementById('accessCodeForm').style.display = 'none';
+                    adminPanel.style.display = 'block';
+                    adminCode.value = '';
+                    showNotification('Admin access granted!', 'success');
+                    loadAdminArticles();
+                } else {
+                    showNotification('Incorrect access code. Please try again.', 'error');
+                    adminCode.value = '';
+                    adminCode.focus();
+                }
+            });
+
+            // Admin Panel Navigation
+            addArticleBtn.addEventListener('click', () => {
+                addArticleForm.style.display = 'block';
+                manageArticles.style.display = 'none';
+            });
+
+            manageArticlesBtn.addEventListener('click', () => {
+                addArticleForm.style.display = 'none';
+                manageArticles.style.display = 'block';
+                loadAdminArticles();
+            });
+
+            logoutAdminBtn.addEventListener('click', () => {
+                isAdminLoggedIn = false;
+                document.getElementById('accessCodeForm').style.display = 'block';
+                adminPanel.style.display = 'none';
+                addArticleForm.style.display = 'none';
+                manageArticles.style.display = 'none';
+                showNotification('Logged out successfully', 'info');
+            });
+
+            cancelAddArticle.addEventListener('click', () => {
+                addArticleForm.style.display = 'none';
+                articleForm.reset();
+            });
+
+            // Add Article Form Submission
+            articleForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const newArticle = {
+                    id: Date.now(),
+                    title: document.getElementById('articleTitle').value,
+                    category: document.getElementById('articleCategory').value,
+                    content: document.getElementById('articleContent').value,
+                    image: document.getElementById('articleImage').value || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
+                    author: document.getElementById('articleAuthor').value,
+                    date: new Date().toISOString().split('T')[0],
+                    views: 0
+                };
+                
+                // Add to local newsData
+                newsData.articles.unshift(newArticle);
+                
+                // Save to localStorage for persistence
+                localStorage.setItem('schoolNewsArticles', JSON.stringify(newsData.articles));
+                
+                // Reset form and hide
+                articleForm.reset();
+                addArticleForm.style.display = 'none';
+                
+                // Re-render news
+                loadNewsArticles();
+                
+                showNotification('Article added successfully!', 'success');
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === adminModal) {
+                    adminModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    adminCode.value = '';
+                }
+            });
+            
+            // Footer links
+            footerLinks.forEach(link => {
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const linkText = this.textContent || this.innerText;
+                        showNotification(`${linkText} page would open here in a full implementation`, 'info');
+                    });
+                }
+            });
+            
+            // Navigation links
+            document.querySelectorAll('.main-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (!this.classList.contains('active')) {
+                        e.preventDefault();
+                        document.querySelectorAll('.main-nav a').forEach(a => a.classList.remove('active'));
+                        this.classList.add('active');
+                        const pageName = this.textContent.replace(/[^a-zA-Z]/g, '');
+                        showNotification(`Navigating to ${pageName} section`, 'info');
+                    }
+                });
+            });
+            
+            // Profile and settings links
+            ['profile-link', 'events-link', 'notifications-link', 'settings-link'].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const linkName = this.textContent.replace(/[^a-zA-Z\s]/g, '').trim();
+                        showNotification(`${linkName} page would open here`, 'info');
+                        userDropdown.classList.remove('active');
+                        
+                        // Clear notifications if clicking notifications link
+                        if (id === 'notifications-link' && appState.notificationCount > 0) {
+                            appState.notificationCount = 0;
+                            localStorage.setItem('notificationCount', 0);
+                            updateUIFromState();
+                        }
+                    });
+                }
+            });
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

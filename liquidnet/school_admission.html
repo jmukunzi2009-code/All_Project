@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidnet Family High School | Admissions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --dark-green: #1B4D3E;
+            --forest-green: #2E583C;
+            --emerald: #2ECC71;
+            --orange: #E67E22;
+            --burnt-orange: #D35400;
+            --gold: #F1C40F;
+            --chocolate: #8B4513;
+            --light-chocolate: #A0522D;
+            --cream: #FDF5E6;
+            --ivory: #FFFFF0;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #5D6D7E;
+            --shadow: rgba(27, 77, 62, 0.15);
+            --gradient: linear-gradient(135deg, var(--dark-green), var(--forest-green));
+            --gradient-gold: linear-gradient(135deg, var(--orange), var(--gold));
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #1B4D3E;
+            --secondary: #D35400;
+            --accent: #F1C40F;
+            --light: #FDF5E6;
+            --dark: #2C3E50;
+            --gray: #5D6D7E;
+            --light-gray: #FFFFF0;
+            --success: #2ECC71;
+            --warning: #E67E22;
+            --info: #2E583C;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            background-color: var(--accent);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .nav-links a.active {
+            background-color: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Hero Section */
+        .admission-hero {
+            background: var(--gradient);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admission-hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(245, 158, 11, 0.4);
+            background-color: #e68900;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Admission Process */
+        .admission-process {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .process-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .process-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .process-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--gray);
+        }
+
+        .process-sidebar .info-card,
+        .process-sidebar .contact-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .process-sidebar h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .process-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-sidebar li {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+            color: var(--text-dark);
+        }
+
+        .process-sidebar a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .process-sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Principal's Letter */
+        .principal-letter {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .letter-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .letter-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .principal-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+        }
+
+        .letter-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .position {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .letter-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        .letter-body p:first-child {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Academic Programs */
+        .academic-programs {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: var(--gradient-gold);
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .program-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .program-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .program-card:hover .program-features li {
+            border-left-color: var(--primary);
+        }
+
+        /* Requirements */
+        .requirements {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .requirement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-left: 5px solid var(--accent);
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .requirement-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirement-card h3 i {
+            color: var(--accent);
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .requirement-list li i {
+            color: var(--success);
+        }
+
+        /* Age Groups */
+        .age-groups {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .groups-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .group-card {
+            background: linear-gradient(135deg, var(--light), #e2e8f0);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .group-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .group-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .group-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .group-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .group-age {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Fees Structure */
+        .fees-structure {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+        }
+
+        .fees-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+
+        .fees-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .fees-table th {
+            background: linear-gradient(to right, var(--primary), #2d4fc4);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .fees-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .fees-table tr:hover {
+            background-color: rgba(30, 58, 138, 0.05);
+        }
+
+        .fees-table .highlight {
+            background-color: rgba(245, 158, 11, 0.1);
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Application Form */
+        .application-form {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary), #2d4fc4);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--gray);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>LFHS <span>@</span>ASYV</h1>
+                    <p>Excellence in Education</p>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="school_about.html">About</a></li>
+                <li><a href="school_admission.html" class="active">Admissions</a></li>
+                <li><a href="index.html">Academics</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="admission-hero">
+        <video autoplay muted loop>
+            <source src="background video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Join the Liquidnet Family High School Community</h1>
+                <p>Transforming lives through education and healing since 2008. Part of Agahozo-Shalom Youth Village, empowering Rwanda's most vulnerable youth to become leaders.</p>
+                <a href="#process" class="btn">Learn About Admissions</a>
+                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Process -->
+    <section class="admission-process" id="process">
+        <div class="container">
+            <h2 class="section-title">Admission Process & Selection</h2>
+            <p class="section-description">The school does not use a typical open-enrollment application. Instead, it follows a targeted recruitment process focused on vulnerability and potential.</p>
+            
+            <div class="process-content">
+                <div class="process-text">
+                    <h3>District-Based Recruitment</h3>
+                    <p>Youth are selected from each of the 30 Rwandan districts.</p>
+                    
+                    <h3>Selection Criteria</h3>
+                    <p>The school prioritizes the "most vulnerable" students, including orphans, those living in severe poverty, or those with refugee status.</p>
+                    
+                    <h3>Gender Balance</h3>
+                    <p>To support girls' education, the village maintains a ratio of approximately 60% female and 40% male students.</p>
+                    
+                    <h3>Internal Capability</h3>
+                    <p>While focusing on vulnerability, selectors also look for students who have the "internal capabilities" to thrive in the village's intensive educational and healing environment.</p>
+                </div>
+                
+                <div class="process-sidebar">
+                    <div class="info-card">
+                        <h4>Academic Requirements & Structure</h4>
+                        <ul>
+                            <li><strong>Entry Level:</strong> Students typically enter after completing middle school (Senior Level 3).</li>
+                            <li><strong>Enrichment Year:</strong> The first year is a specialized "catch-up" or enrichment period designed to prepare students for the rigors of high school.</li>
+                            <li><strong>Academic Combinations:</strong> Following the enrichment year, students choose a "combination" (similar to a major), such as History, Economics, and Geography (HEG), which they study for the next three years.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h4>Admission Contact Information</h4>
+                        <p>Because admissions are handled through social services and specific district outreach, there is no public "application form" to download. Interested parties are encouraged to contact the school directly for guidance:</p>
+                        <p><strong>Email:</strong> lnfhs@asyv.org or info@asyv.org</p>
+                        <p><strong>Location:</strong> Agahozo-Shalom Youth Village, Rwamagana District, Rubona Sector, Rwanda</p>
+                        <p><strong>Official Website:</strong> <a href="https://asyv.org" target="_blank">asyv.org</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal's Letter -->
+    <section class="principal-letter">
+        <div class="container">
+            <h2 class="section-title">A Message from Our Principal</h2>
+            <div class="letter-content">
+                <div class="letter-header">
+                    <img src="D2.png" alt="Principal Dr. Jean Paul" class="principal-photo">
+                    <div class="letter-info">
+                        <h3>Dr. Jean Paul</h3>
+                        <p class="position">School Principal</p>
+                        <p class="date">April 9, 2026</p>
+                    </div>
+                </div>
+                <div class="letter-body">
+                    <p>Dear Prospective Families and Guardians,</p>
+                    <p>Welcome to Liquidnet Family High School, where we believe that every child deserves the opportunity to heal, grow, and succeed. As the academic heart of the Agahozo-Shalom Youth Village, our school is not just an educational institution—it's a sanctuary for Rwanda's most vulnerable youth.</p>
+                    <p>Since our founding in 2008, we have maintained a 100% pass rate on national exams and sent 65% of our graduates to universities. But our success is measured not just in academic achievements, but in the lives transformed through our unique approach that combines rigorous education with emotional healing.</p>
+                    <p>Our admissions process is designed to identify students who will thrive in our supportive community. We look for young people with the internal capabilities to benefit from our intensive program, while prioritizing those facing the greatest challenges—orphans, children from extreme poverty, and refugees.</p>
+                    <p>If you are considering LFHS for your child or ward, please contact us directly. Our team is here to guide you through the process and answer any questions you may have.</p>
+                    <p>With hope and determination,<br><strong>Dr. Jean Paul</strong><br>Principal, Liquidnet Family High School</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Programs -->
+    <section class="academic-programs">
+        <div class="container">
+            <h2 class="section-title">Academic Programs at LFHS</h2>
+            <p class="section-description">Our comprehensive curriculum combines academic excellence with practical skills and character development.</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Enrichment Year (EY)</h3>
+                    <p>A dedicated "catch-up" year focused on English language acquisition, IT skills, and emotional healing before advanced academics begin.</p>
+                    <ul class="program-features">
+                        <li>English language immersion</li>
+                        <li>Basic computer skills</li>
+                        <li>Emotional support and counseling</li>
+                        <li>Foundation mathematics and science</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science & Technology (STEAM)</h3>
+                    <p>Robotics, coding, 3D design, and innovation lab where students prototype real-world solutions for Rwanda's challenges.</p>
+                    <ul class="program-features">
+                        <li>Robotics and automation</li>
+                        <li>Programming and app development</li>
+                        <li>3D printing and design</li>
+                        <li>Environmental science projects</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Media & Journalism</h3>
+                    <p>The Liquidnet Student Magazine, professional-grade film production, and photography studio where students tell powerful stories.</p>
+                    <ul class="program-features">
+                        <li>Digital journalism</li>
+                        <li>Film production</li>
+                        <li>Photography</li>
+                        <li>Public speaking</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Leadership & Clubs</h3>
+                    <p>Over 20 student clubs including Debate, Robotics, Journalism, Arts, Athletics. Plus Village Time—our signature Friday talent show.</p>
+                    <ul class="program-features">
+                        <li>Student government</li>
+                        <li>Debate and public speaking</li>
+                        <li>Community service</li>
+                        <li>Cultural performances</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Academic Combinations</h3>
+                    <p>Students choose specialized combinations like History, Economics, and Geography (HEG) or Physics, Chemistry, and Mathematics (PCM).</p>
+                    <ul class="program-features">
+                        <li>HEG: Humanities focus</li>
+                        <li>PCM: Science focus</li>
+                        <li>MCB: Biology focus</li>
+                        <li>Flexible pathways</li>
+                    </ul>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Holistic Development</h3>
+                    <p>Integration of Tikkun Ha'lev (healing the heart) and Tikkun Olam (repairing the world) through counseling, mentorship, and service.</p>
+                    <ul class="program-features">
+                        <li>Individual counseling</li>
+                        <li>Group therapy sessions</li>
+                        <li>Mentorship programs</li>
+                        <li>Community impact projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fees Structure -->
+    <section class="fees-structure">
+        <div class="container">
+            <h2 class="section-title">Tuition & Fees Structure</h2>
+            <div class="fees-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Tuition Fee</th>
+                            <th>Registration</th>
+                            <th>Development Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nursery</td>
+                            <td>$500 / term</td>
+                            <td>$100 (once)</td>
+                            <td>$50 / term</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Kindergarten</td>
+                            <td>$600 / term</td>
+                            <td>$100 (once)</td>
+                            <td>$60 / term</td>
+                        </tr>
+                        <tr>
+                            <td>Primary 1-3</td>
+                            <td>$700 / term</td>
+                            <td>$150 (once)</td>
+                            <td>$70 / term</td>
+                        </tr>
+                        <tr>
+                            <td>Primary 4-6</td>
+                            <td>$800 / term</td>
+                            <td>$150 (once)</td>
+                            <td>$80 / term</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td>Secondary</td>
+                            <td>$900 / term</td>
+                            <td>$200 (once)</td>
+                            <td>$100 / term</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray);">
+                <i class="fas fa-info-circle" style="color: var(--info);"></i> 
+                All fees are per term (3 terms per year). Payment plans and scholarships available.
+            </p>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application-form" id="apply">
+        <div class="container">
+            <h2 class="section-title">Online Application Form</h2>
+            <div class="form-container">
+                <form id="admissionForm" action="http://localhost:3000/api/admission" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName"><i class="fas fa-user"></i> Student's First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName"><i class="fas fa-user"></i> Student's Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate"><i class="fas fa-birthday-cake"></i> Date of Birth *</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender"><i class="fas fa-venus-mars"></i> Gender *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="grade"><i class="fas fa-graduation-cap"></i> Grade Applying For *</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select Grade Level</option>
+                            <option value="nursery">Nursery</option>
+                            <option value="kindergarten">Kindergarten</option>
+                            <option value="primary1">Primary 1</option>
+                            <option value="primary2">Primary 2</option>
+                            <option value="primary3">Primary 3</option>
+                            <option value="primary4">Primary 4</option>
+                            <option value="primary5">Primary 5</option>
+                            <option value="primary6">Primary 6</option>
+                            <option value="secondary">Secondary 1</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="parentName"><i class="fas fa-users"></i> Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentPhone"><i class="fas fa-phone"></i> Phone Number *</label>
+                            <input type="tel" id="parentPhone" name="parentPhone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="previousSchool"><i class="fas fa-school"></i> Previous School (if applicable)</label>
+                        <input type="text" id="previousSchool" name="previousSchool">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-comment"></i> Additional Information</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Admissions Office Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Liquidnet Family High School Campus<br>234 5th Avenue, 5th Floor, Suite 508<br>New York, NY 10001</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Admissions: 631-317-1763<br>Office: +250 987 654 321<br>Mon-Fri: 8:00 AM - 4:00 PM</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Admissions: admissions@liquidnetfamilyhighschool.org<br>Information: info@liquidnetfamilyhighschool.org<br>Response within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Liquidnet Family High School</h3>
+                    <p>Transforming lives through education and healing since 2008. Part of Agahozo-Shalom Youth Village.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/agahozoshalom" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/asyv" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/agahozoshalom" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@theasyv" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="academic2.html">Home</a></li>
+                        <li><a href="school_about.html">About School</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="academic2.html">Academic Programs</a></li>
+                        <li><a href="academic2.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Important Dates</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">2024 Admissions Open: Jan 15</a></li>
+                        <li><a href="#">Entrance Exams: March 10</a></li>
+                        <li><a href="#">Term Starts: April 1</a></li>
+                        <li><a href="#">Scholarship Deadline: Feb 28</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Liquidnet Family High School. All Rights Reserved. | <a href="https://asyv.org" style="color: var(--accent);" target="_blank">asyv.org</a> | lnfhs@asyv.org | <a href="#" style="color: var(--accent);">Privacy Policy</a></p>
+                <p style="margin-top: 0.5rem;">Accredited by Ministry of Education | Member of National Schools Association</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const payload = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                birthDate: document.getElementById('birthDate').value,
+                gender: document.getElementById('gender').value,
+                grade: document.getElementById('grade').value,
+                parentName: document.getElementById('parentName').value,
+                parentPhone: document.getElementById('parentPhone').value,
+                email: document.getElementById('email').value,
+                previousSchool: document.getElementById('previousSchool').value,
+                message: document.getElementById('message').value
+            };
+
+            fetch(this.action, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Thank you ${payload.firstName} ${payload.lastName}! Your application for ${payload.grade} has been submitted successfully. Our admissions team will contact you within 48 hours.`);
+                    this.reset();
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Failed to submit application.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Admission form error:', error);
+                alert('Unable to submit your application right now. Please try again later.');
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Add animation to cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Observe cards for animation
+        document.querySelectorAll('.step-card, .requirement-card, .group-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

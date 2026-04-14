@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: grid;
+    grid-template-areas: 
+    "header header header",
+    "sidebar main main"
+    ;
+    gap: 20px;
+
+}
+
+.header{
+    grid-area: header;
+    background: green;
+    height: 30px;
+    width: 100px;
+}
+
+.sidebar{
+    grid-area:sidebar;
+    background: green;
+    height: 30px;
+    width: 100px;
+}
+
+.main{
+    grid-area:main;
+    background: green;
+    height: 30px;
+    width: 100px;
+}

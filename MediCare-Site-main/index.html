@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidnet Family High School - Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="school-logo.png" type="image/x-icon">
+    <style>
+        /* ========== CSS RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #dc2626;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ========== TYPOGRAPHY & UTILITIES ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #d97706);
+            color: white;
+            box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1.2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .top-bar {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar .contact-info i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .top-bar .social-icons a {
+            color: white;
+            margin-left: 1rem;
+            font-size: 1rem;
+        }
+
+        .top-bar .social-icons a:hover {
+            color: var(--accent);
+        }
+
+        .header-container {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
+            border: 4px solid var(--accent);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            color: #e2e8f0;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1rem;
+            display: block;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 80%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            position: relative;
+            height: 650px;
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.9)), url('');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        /* ========== STATISTICS SECTION ========== */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 4rem 2rem;
+            margin: 5rem 0;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
+            width: 100%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff, #f0f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* ========== ACHIEVEMENTS SECTION ========== */
+        .achievements-section {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .achievements-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .achievement-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .achievement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.05);
+        }
+
+        .achievement-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .achievement-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .achievement-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .achievement-year {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .achievement-description {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .achievement-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .trophy-case {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-top: 4rem;
+            color: white;
+        }
+
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .trophy-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .trophy-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .trophy-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trophy-item p {
+            opacity: 0.9;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+            width: 100%;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* ========== MISSION, VISION, VALUES ========== */
+        .mvvs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .mvv-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border-top: 5px solid var(--primary);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .mvv-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mvv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+        }
+
+        .mvv-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        /* ========== NEWS SECTION ========== */
+        .news-section {
+            margin-bottom: 5rem;
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .news-header .section-title {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .news-header .section-title::after {
+            left: 0;
+            transform: none;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-image {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .news-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* ========== EVENTS SECTION ========== */
+        .events-section {
+            margin-bottom: 5rem;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .upcoming-events {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .upcoming-events h3 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .event-card {
+            display: flex;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-color: #f8fafc;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .event-card:hover {
+            background-color: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .event-date {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 80px;
+            margin-right: 1.5rem;
+        }
+
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        .event-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .event-details p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .event-meta i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        /* ========== CALENDAR WIDGET ========== */
+        .calendar-widget {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-header h4 {
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .calendar-header button {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-day {
+            padding: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calendar-date {
+            padding: 0.8rem;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar-date:hover {
+            background-color: var(--light-gray);
+        }
+
+        .calendar-date.today {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .calendar-date.event-day {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .calendar-date.empty {
+            background: transparent;
+            cursor: default;
+        }
+
+        /* ========== ACADEMIC PROGRAMS ========== */
+        .academic-programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .program-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.4s;
+            border-bottom: 5px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-bottom-color: var(--primary);
+        }
+
+        .program-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .program-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .program-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ========== GALLERY SECTION ========== */
+        .gallery-section {
+            margin-bottom: 5rem;
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact-section {
+            margin-bottom: 5rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            background: linear-gradient(135deg, var(--primary), #1e40af);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-form-wrapper {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .contact-form-wrapper h3 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .contact-form .full-width {
+            grid-column: span 2;
+        }
+
+        .contact-form button[type="submit"] {
+            grid-column: span 2;
+            justify-self: center;
+            padding: 1rem 3rem;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #0f172a);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .footer-section .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-section .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ========== ADMIN PANEL ========== */
+        .admin-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .admin-btn {
+            background: linear-gradient(135deg, var(--secondary), #b91c1c);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+            transition: all 0.3s;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 12px 30px rgba(220, 38, 38, 0.5);
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* ========== TOAST NOTIFICATION ========== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10000;
+            transition: all 0.5s ease;
+            opacity: 0;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* ========== COOKIE CONSENT ========== */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem;
+            z-index: 1000;
+            display: none;
+        }
+
+        .cookie-consent.show {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .cookie-content p {
+            flex: 1;
+            margin: 0;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* ========== LOADING ANIMATION ========== */
+        .loading {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-gray);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1200px) {
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form .full-width,
+            .contact-form button[type="submit"] {
+                grid-column: span 1;
+            }
+            
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 100px 2rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.5s ease;
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                display: flex;
+                right: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                padding: 1rem;
+                border-radius: 5px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .top-bar {
+                padding: 0.5rem 1rem;
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+            
+            .top-bar .contact-info {
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .achievement-image {
+                height: 180px;
+            }
+            
+            .achievement-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 550px;
+                padding: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mvvs {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .stat-text {
+                font-size: 1rem;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .hero, footer, .admin-panel, .back-to-top, .cookie-consent {
+                display: none !important;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .section-title {
+                color: black;
+            }
+            
+            .btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top no-print" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent no-print" id="cookieConsent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button class="btn btn-outline" id="acceptCookies" style="background: transparent; border: 2px solid white; color: white;">Accept</button>
+                <button class="btn" id="declineCookies" style="background: var(--accent); border: none; color: white;">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel no-print">
+        <button class="admin-btn" id="adminBtn">
+            <i class="fas fa-cog"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> 631-317-1763</p>
+                <p><i class="fas fa-envelope"></i> info@liquidnetfamilyhighschool.org</p>
+                <p><i class="fas fa-map-marker-alt"></i>234 5th Avenue, 5th Floor, Suite 508, New York, NY 10001</p>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/agahozoshalom" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/asyv" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/agahozoshalom" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@theasyv" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Liquidnet Family High School</h1>
+                    <p>If you see far, you will go far</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="school_about.html">About</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#academic">Academic</a></li>
+                    <li><a href="school_news.html">News</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Liquidnet Family High School</h1>
+            <p>"If you see far, you will go far." Transforming lives since 2008 through healing, education, and hope. A beacon of resilience for Rwanda's most vulnerable youth.</p>
+            <div class="btn-container">
+                <a href="school_about.html" class="btn btn-primary">Learn More</a>
+                <a href="school_admission.html" class="btn btn-outline">Admissions</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-text">National Exam Pass Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1,600+</div>
+                <div class="stat-text">Alumni Graduates</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">65%</div>
+                <div class="stat-text">University Admission Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-text">Years of Impact (2008-2026)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">About Our School</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="school.png" alt="Liquidnet Family High School School">
+                </div>
+                <div class="about-text">
+                    <h3>Our History & Legacy</h3>
+                    <p>Founded in December 2008 as part of the Agahozo-Shalom Youth Village, Liquidnet Family High School emerged from the vision of philanthropist Anne Heyman to heal Rwanda's most vulnerable youth—orphans and children from extreme poverty caused by the 1994 Genocide. Built with $7.5 million investment and hands-on volunteerism from Liquidnet employees, the school honors both their generosity and its commitment to transformation.</p>
+                    <p>LFHS operates on the philosophy of <strong>Tikkun Ha'lev</strong> (Repairing the Heart), recognizing that healing from trauma must precede academic excellence. Our unique Enrichment Year allows students to recover emotionally before advancing academically, creating a foundation for lasting success.</p>
+                    <p>Since our first graduation in 2012, LFHS maintains a 100% pass rate on national exams, with 65% of alumni advancing to universities and serving as leaders across Rwanda in medicine, engineering, business, and social work.</p>
+                    <a href="school_about.html" class="btn btn-primary" style="margin-top: 1rem;">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission, Vision, Values -->
+        <section>
+            <h2 class="section-title">Our Vision, Mission & Values</h2>
+            <div class="mvvs">
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Vision</h3>
+                    <p>To create a world where every vulnerable youth has the opportunity to heal, grow, and become a leader who contributes to a more peaceful and sustainable society. Our graduates are the drivers of Rwanda's social and economic transformation.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Mission</h3>
+                    <p>To provide a holistic healing and educational environment for Rwanda's most vulnerable orphaned and at-risk youth. We "dry their tears" (Agahozo) and empower them to "live in peace" (Shalom) through high-quality education, parental care, and professional skills.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Core Values</h3>
+                    <p><strong>Responsibility • Respect • Integrity • Commitment • Collaboration • Excellence • Service (Tikkun Olam)</strong> - These seven values guide every student and staff member at LFHS, shaping our community and culture.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section">
+            <h2 class="section-title">Our Achievements</h2>
+            
+            <div class="achievements-grid" id="achievementsContainer">
+                <!-- Achievements will be loaded by JavaScript -->
+            </div>
+
+            <!-- Trophy Case -->
+            <div class="trophy-case">
+                <h3 style="color: white; text-align: center; margin-bottom: 1rem;">Historic Achievements</h3>
+                <div class="trophy-grid">
+                    <div class="trophy-item">
+                        <i class="fas fa-star"></i>
+                        <h4>100% Pass Rate</h4>
+                        <p>National Secondary Exams (Class of 2025)</p>
+                    </div>
+                    <div class="trophy-item">
+                        <i class="fas fa-ranking-star"></i>
+                        <h4>Top 40 Schools</h4>
+                        <p>National Rankings in Rwanda</p>
+                    </div>
+                    <div class="trophy-item">
+                        <i class="fas fa-trophy"></i>
+                        <h4>Debate Champions</h4>
+                        <p>Money Makeover Challenge 2024</p>
+                    </div>
+                    <div class="trophy-item">
+                        <i class="fas fa-microscope"></i>
+                        <h4>STEAM Innovation</h4>
+                        <p>Robotics, Coding & Science Fair Winners</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced News Section -->
+        <section id="news" class="news-section">
+            <div class="news-header">
+                <h2 class="section-title">Latest News</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="filter-btn active">All News</button>
+                    <button class="filter-btn">Academic</button>
+                    <button class="filter-btn">Events</button>
+                    <button class="filter-btn">Sports</button>
+                </div>
+            </div>
+            <div class="news-grid" id="newsContainer">
+                <!-- News will be loaded here -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="school_news.html" class="btn btn-primary">View All News</a>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="events-section">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-container">
+                <div class="upcoming-events">
+                    <h3>School Events Calendar</h3>
+                    <div id="eventsContainer">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="calendar-widget">
+                    <div class="calendar-header">
+                        <h4 id="currentMonth">November 2023</h4>
+                        <div>
+                            <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                            <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendar-days">
+                        <div class="calendar-day">Sun</div>
+                        <div class="calendar-day">Mon</div>
+                        <div class="calendar-day">Tue</div>
+                        <div class="calendar-day">Wed</div>
+                        <div class="calendar-day">Thu</div>
+                        <div class="calendar-day">Fri</div>
+                        <div class="calendar-day">Sat</div>
+                    </div>
+                    <div class="calendar-dates" id="calendarDates">
+                        <!-- Calendar dates will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Programs -->
+        <section id="academic">
+            <h2 class="section-title">Academic Programs</h2>
+            <div class="academic-programs">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Enrichment Year (EY)</h3>
+                    <p>A dedicated "catch-up" year focused on English language acquisition, IT skills, and emotional healing before advanced academics begin.</p>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science & Technology (STEAM)</h3>
+                    <p>Robotics, coding, 3D design, and innovation lab where students prototype real-world solutions for Rwanda's challenges.</p>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Media & Journalism</h3>
+                    <p>The Liquidnet Student Magazine, professional-grade film production, and photography studio where students tell powerful stories.</p>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3>Leadership & Clubs</h3>
+                    <p>Over 20 student clubs including Debate, Robotics, Journalism, Arts, Athletics. Plus Village Time—our signature Friday talent show.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title">School Gallery</h2>
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
+                <button class="filter-btn" data-filter="campus">Campus</button>
+            </div>
+            <div class="gallery-grid" id="galleryContainer">
+                <!-- Gallery images will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info-section">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>U.S. Office</h4>
+                            <p>234 5th Avenue<br>5th Floor, Suite 508<br>New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone Numbers</h4>
+                            <p>631-317-1763<br>631-317-1763</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Address</h4>
+                            <p>lnfhs@asyv.org<br>info@asyv.org</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>School Hours</h4>
+                            <p>Monday - Friday: 7:30 AM - 5:00 PM<br>Saturday: 8:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.886544299877!2d30.67124587491052!3d-2.197898337828438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19d7bb23d94a737d%3A0x77c3e2b1d2a1b0b9!2sNyamateke%2C%20New York, NY 10001!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm" class="contact-form" action="http://localhost:3000/api/contact" method="POST">
+                    <div>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    
+                    <div class="full-width">
+                        <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+                    
+                    <div class="full-width">
+                        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="full-width" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liquidnet Family High School</h3>
+                <p>Transforming lives through education and healing since 2008. Part of Agahozo-Shalom Youth Village, empowering Rwanda's most vulnerable youth to become leaders and changemakers.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/agahozoshalom" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/asyv" aria-label="X/Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/agahozoshalom" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@theasyv" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#achievements"><i class="fas fa-chevron-right"></i> Achievements</a></li>
+                    <li><a href="#academic"><i class="fas fa-chevron-right"></i> Academic</a></li>
+                    <li><a href="#news"><i class="fas fa-chevron-right"></i> News & Events</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Important Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Admission Process</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> School Fees</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> School Calendar</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Exam Results</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Parent Portal</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter to receive updates about school news and events.</p>
+                <form id="newsletterForm" class="newsletter-form" action="http://localhost:3000/api/subscribe" method="POST">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Liquidnet Family High School. All Rights Reserved. | <strong>Official Website:</strong> <a href="https://asyv.org" target="_blank" style="color: var(--accent);">asyv.org</a> | Email: lnfhs@asyv.org | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for transformation</p>
+        </div>
+    </footer>
+
+    <!-- Admin Modal -->
+    <div style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;" id="adminModal">
+        <div style="background-color: white; border-radius: 15px; padding: 3rem; max-width: 500px; width: 90%; position: relative;">
+            <button style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer;" id="closeAdminModal">&times;</button>
+            <h2 style="color: var(--primary); margin-bottom: 2rem;">Admin Access</h2>
+            <div id="accessCodeForm">
+                <p style="margin-bottom: 1.5rem;">Enter admin access code to manage content:</p>
+                <input type="password" id="adminCode" placeholder="Enter code 551203" style="width: 100%; padding: 1rem; border-radius: 8px; border: 2px solid var(--light-gray); margin-bottom: 1.5rem; font-size: 1.1rem;">
+                <button class="btn btn-primary" id="verifyCodeBtn" style="width: 100%; padding: 1rem;">Access Admin Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Sample Data
+        let schoolNews = [
+            {
+                id: 1,
+                title: "School Wins Regional Science Competition",
+                date: "2023-10-15",
+                category: "achievements",
+                content: "Our school team won first place in the regional science competition with their innovative water purification project that uses locally available materials.",
+                image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                author: "School Administration",
+                views: 245
+            },
+            {
+                id: 2,
+                title: "New Computer Lab Inaugurated",
+                date: "2023-10-10",
+                category: "academic",
+                content: "The new computer lab with 30 modern computers was inaugurated to enhance digital literacy among students. The lab features high-speed internet and educational software.",
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
+                author: "ICT Department",
+                views: 189
+            },
+            {
+                id: 3,
+                title: "Annual Sports Day Success",
+                date: "2023-10-05",
+                category: "sports",
+                content: "Our annual sports day was a huge success with over 500 students participating in various athletic events. The event promoted teamwork and healthy competition.",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1490&q=80",
+                author: "Sports Department",
+                views: 312
+            },
+            {
+                id: 4,
+                title: "Parent-Teacher Meeting Scheduled",
+                date: "2023-10-01",
+                category: "events",
+                content: "The term 2 parent-teacher meeting has been scheduled for November 15th, 2023. Parents are encouraged to attend to discuss their children's progress.",
+                image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                author: "School Administration",
+                views: 167
+            }
+        ];
+
+        let achievementsData = [
+            {
+                id: 1,
+                title: "National Excellence Award 2023",
+                year: "2023",
+                description: "Received National Excellence Award for outstanding academic performance and holistic education.",
+                image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                category: "academic"
+            },
+            {
+                id: 2,
+                title: "Science Fair Champions",
+                year: "2022",
+                description: "Won first prize in Regional Science Fair with innovative solar-powered irrigation system project.",
+                image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                category: "science"
+            },
+            {
+                id: 3,
+                title: "District Football Champions",
+                year: "2023",
+                description: "School football team won district championship for third consecutive year.",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1490&q=80",
+                category: "sports"
+            },
+            {
+                id: 4,
+                title: "Environmental Excellence Award",
+                year: "2022",
+                description: "Recognized for outstanding environmental conservation efforts and school garden project.",
+                image: "https://images.unsplash.com/photo-1561164517-686f490ee86d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                category: "environment"
+            },
+            {
+                id: 5,
+                title: "Best Primary School Award",
+                year: "2021",
+                description: "Awarded Best Primary School in Eastern Province for academic excellence.",
+                image: "D1.png",
+                category: "academic"
+            },
+            {
+                id: 6,
+                title: "Cultural Festival Winners",
+                year: "2023",
+                description: "Won first prize in traditional dance and music at Regional Cultural Festival.",
+                image: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+                category: "culture"
+            }
+        ];
+
+        let upcomingEvents = [
+            {
+                id: 1,
+                title: "Parents-Teachers Meeting",
+                date: "2023-11-15",
+                time: "9:00 AM - 2:00 PM",
+                location: "School Hall",
+                description: "Discussion of student progress and academic performance"
+            },
+            {
+                id: 2,
+                title: "Sports Day Competition",
+                date: "2023-11-20",
+                time: "8:00 AM - 4:00 PM",
+                location: "School Playground",
+                description: "Annual inter-class sports competition"
+            },
+            {
+                id: 3,
+                title: "Mid-Term Examinations",
+                date: "2023-11-25",
+                time: "All Day",
+                location: "All Classrooms",
+                description: "Mid-term examinations for all classes"
+            },
+            {
+                id: 4,
+                title: "Cultural Day Celebration",
+                date: "2023-12-01",
+                time: "10:00 AM - 3:00 PM",
+                location: "School Grounds",
+                description: "Celebration of New York, NY 10001n culture and traditions"
+            }
+        ];
+
+        let galleryImages = [
+            {
+                id: 1,
+                title: "Sports Day 2023",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1490&q=80",
+                category: "sports"
+            },
+            {
+                id: 2,
+                title: "Graduation Ceremony",
+                image: "D9.png",
+                category: "events"
+            },
+            {
+                id: 3,
+                title: "Science Lab Session",
+                image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+                category: "academic"
+            },
+            {
+                id: 4,
+                title: "Cultural Dance Performance",
+                image: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+                category: "events"
+            },
+            {
+                id: 5,
+                title: "School Library",
+                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1528&q=80",
+                category: "campus"
+            },
+            {
+                id: 6,
+                title: "Football Match",
+                image: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+                category: "sports"
+            }
+        ];
+
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const adminBtn = document.getElementById('adminBtn');
+        const adminModal = document.getElementById('adminModal');
+        const closeAdminModal = document.getElementById('closeAdminModal');
+        const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+        const adminCode = document.getElementById('adminCode');
+        const newsContainer = document.getElementById('newsContainer');
+        const achievementsContainer = document.getElementById('achievementsContainer');
+        const eventsContainer = document.getElementById('eventsContainer');
+        const galleryContainer = document.getElementById('galleryContainer');
+        const calendarDates = document.getElementById('calendarDates');
+        const currentMonthEl = document.getElementById('currentMonth');
+        const prevMonthBtn = document.getElementById('prevMonth');
+        const nextMonthBtn = document.getElementById('nextMonth');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const contactForm = document.getElementById('contactForm');
+        const backToTop = document.getElementById('backToTop');
+        const cookieConsent = document.getElementById('cookieConsent');
+        const acceptCookies = document.getElementById('acceptCookies');
+        const declineCookies = document.getElementById('declineCookies');
+        const toast = document.getElementById('toast');
+
+        // Current date for calendar
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            toast.textContent = message;
+            toast.style.background = type === 'success' ? 'var(--success)' : 
+                                   type === 'error' ? 'var(--secondary)' : 
+                                   type === 'warning' ? 'var(--warning)' : 'var(--info)';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Back to Top Button
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Cookie Consent
+        setTimeout(() => {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                cookieConsent.classList.add('show');
+            }
+        }, 2000);
+
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.classList.remove('show');
+            showToast('Cookie preferences saved. Thank you!');
+        });
+
+        declineCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'false');
+            cookieConsent.classList.remove('show');
+            showToast('Cookie preferences saved.', 'info');
+        });
+
+        // Admin Panel Functions
+        adminBtn.addEventListener('click', () => {
+            adminModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeAdminModal.addEventListener('click', () => {
+            adminModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            adminCode.value = '';
+        });
+
+        // Verify Admin Code
+        verifyCodeBtn.addEventListener('click', () => {
+            if (adminCode.value === '551203') {
+                alert('Admin access granted! In a real implementation, this would open the full admin panel.');
+                adminModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                adminCode.value = '';
+            } else {
+                alert('Incorrect access code. Please try again.');
+                adminCode.value = '';
+                adminCode.focus();
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === adminModal) {
+                adminModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                adminCode.value = '';
+            }
+        });
+
+        // Render Achievements
+        function renderAchievements() {
+            achievementsContainer.innerHTML = '';
+            
+            achievementsData.forEach(achievement => {
+                const achievementCard = document.createElement('div');
+                achievementCard.className = 'achievement-card';
+                achievementCard.innerHTML = `
+                    <div class="achievement-image">
+                        <img src="${achievement.image}" alt="${achievement.title}" loading="lazy">
+                        <div class="achievement-badge">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <div class="achievement-content">
+                        <h3 class="achievement-title">${achievement.title}</h3>
+                        <div class="achievement-year">
+                            <i class="far fa-calendar"></i> ${achievement.year}
+                        </div>
+                        <p class="achievement-description">${achievement.description}</p>
+                        <div class="achievement-meta">
+                            <span><i class="fas fa-star"></i> Achievement</span>
+                            <span>${achievement.category}</span>
+                        </div>
+                    </div>
+                `;
+                
+                achievementsContainer.appendChild(achievementCard);
+            });
+        }
+
+        // Render News
+        function renderNews() {
+            newsContainer.innerHTML = '';
+            
+            schoolNews.forEach(news => {
+                const date = new Date(news.date);
+                const formattedDate = date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                const month = date.toLocaleDateString('en-US', { month: 'short' });
+                const day = date.getDate();
+                
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.innerHTML = `
+                    <div class="news-image">
+                        <img src="${news.image}" alt="${news.title}">
+                        <span class="news-category">${news.category.charAt(0).toUpperCase() + news.category.slice(1)}</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">
+                            <i class="far fa-calendar"></i> ${formattedDate}
+                        </div>
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-excerpt">${news.content.substring(0, 120)}...</p>
+                        <div class="news-meta">
+                            <span><i class="far fa-user"></i> ${news.author}</span>
+                            <span><i class="far fa-eye"></i> ${news.views} views</span>
+                        </div>
+                    </div>
+                `;
+                newsContainer.appendChild(newsCard);
+            });
+        }
+
+        // Render Events
+        function renderEvents() {
+            eventsContainer.innerHTML = '';
+            
+            upcomingEvents.forEach(event => {
+                const date = new Date(event.date);
+                const day = date.getDate();
+                const month = date.toLocaleDateString('en-US', { month: 'short' });
+                
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.innerHTML = `
+                    <div class="event-date">
+                        <div class="event-day">${day}</div>
+                        <div class="event-month">${month}</div>
+                    </div>
+                    <div class="event-details">
+                        <h4>${event.title}</h4>
+                        <p>${event.description}</p>
+                        <div class="event-meta">
+                            <span><i class="far fa-clock"></i> ${event.time}</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${event.location}</span>
+                        </div>
+                    </div>
+                `;
+                eventsContainer.appendChild(eventCard);
+            });
+        }
+
+        // Render Gallery
+        function renderGallery() {
+            galleryContainer.innerHTML = '';
+            
+            galleryImages.forEach(image => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.setAttribute('data-category', image.category);
+                galleryItem.innerHTML = `
+                    <img src="${image.image}" alt="${image.title}">
+                    <div class="gallery-overlay">
+                        <h4 style="margin-bottom: 0.5rem; font-size: 1.2rem;">${image.title}</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">${image.category.charAt(0).toUpperCase() + image.category.slice(1)}</p>
+                    </div>
+                `;
+                galleryContainer.appendChild(galleryItem);
+            });
+        }
+
+        // Generate Calendar
+        function generateCalendar(month = currentMonth, year = currentYear) {
+            // Get first day of month
+            const firstDay = new Date(year, month, 1);
+            // Get last day of month
+            const lastDay = new Date(year, month + 1, 0);
+            
+            // Get day of week for first day (0 = Sunday, 1 = Monday, etc.)
+            const firstDayIndex = firstDay.getDay();
+            
+            // Get number of days in month
+            const daysInMonth = lastDay.getDate();
+            
+            // Get current day
+            const today = new Date();
+            const currentDay = today.getDate();
+            const currentMonthIndex = today.getMonth();
+            const currentYearValue = today.getFullYear();
+            
+            // Update month display
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                                "July", "August", "September", "October", "November", "December"];
+            currentMonthEl.textContent = `${monthNames[month]} ${year}`;
+            
+            // Event days (for demo - extract from events data)
+            const eventDays = upcomingEvents.map(event => {
+                const eventDate = new Date(event.date);
+                if (eventDate.getMonth() === month && eventDate.getFullYear() === year) {
+                    return eventDate.getDate();
+                }
+                return null;
+            }).filter(day => day !== null);
+            
+            calendarDates.innerHTML = '';
+            
+            // Add empty cells for days before first day of month
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-date empty';
+                calendarDates.appendChild(emptyCell);
+            }
+            
+            // Add days of month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dateCell = document.createElement('div');
+                dateCell.className = 'calendar-date';
+                dateCell.textContent = i;
+                
+                // Highlight today
+                if (i === currentDay && month === currentMonthIndex && year === currentYearValue) {
+                    dateCell.classList.add('today');
+                }
+                
+                // Highlight event days
+                if (eventDays.includes(i)) {
+                    dateCell.classList.add('event-day');
+                }
+                
+                calendarDates.appendChild(dateCell);
+            }
+        }
+
+        // Calendar Navigation
+        prevMonthBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar(currentMonth, currentYear);
+        });
+
+        // Gallery Filtering
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact Form Submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const payload = {
+                name: this.querySelector('input[name="name"]').value,
+                email: this.querySelector('input[name="email"]').value,
+                subject: this.querySelector('input[name="subject"]').value,
+                message: this.querySelector('textarea[name="message"]').value
+            };
+
+            fetch(this.action, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    this.reset();
+                    showToast('Thank you for your message! We will get back to you soon.', 'success');
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Failed to send message.');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Contact form error:', error);
+                showToast('Unable to send message right now. Please try again later.', 'error');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Highlight active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render all content
+            renderAchievements();
+            renderNews();
+            renderEvents();
+            renderGallery();
+            generateCalendar();
+            
+            // Initialize first nav link as active
+            document.querySelector('nav a').classList.add('active');
+            
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.news-card, .event-card, .program-card, .gallery-item, .achievement-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.cursor = 'pointer';
+                });
+            });
+            
+            // Newsletter subscription
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(evt) {
+                    evt.preventDefault();
+                    const payload = {
+                        email: this.querySelector('input[name="email"]').value
+                    };
+
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: JSON.stringify(payload),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            this.reset();
+                            showToast('Thank you for subscribing to our newsletter!', 'success');
+                        } else {
+                            return response.json().then(data => {
+                                throw new Error(data.error || 'Unable to subscribe.');
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Newsletter subscription error:', error);
+                        showToast('Subscription failed. Please try again later.', 'error');
+                    });
+                });
+            }
+            
+            // News filter buttons
+            const newsFilterBtns = document.querySelectorAll('.news-section .filter-btn');
+            newsFilterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    newsFilterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    showToast(`News filtered by: ${this.textContent}`, 'info');
+                });
+            });
+            
+            // Calendar date click
+            document.querySelectorAll('.calendar-date').forEach(date => {
+                date.addEventListener('click', function() {
+                    if (this.classList.contains('event-day')) {
+                        showToast('You have events on this day!', 'info');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
